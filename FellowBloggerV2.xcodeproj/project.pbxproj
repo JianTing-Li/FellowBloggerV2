@@ -12,6 +12,7 @@
 		D607F07E2239863000D5811A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D607F07C2239863000D5811A /* Main.storyboard */; };
 		D607F0802239863400D5811A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D607F07F2239863400D5811A /* Assets.xcassets */; };
 		D607F0832239863400D5811A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D607F0812239863400D5811A /* LaunchScreen.storyboard */; };
+		D607F08B22398DA400D5811A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D607F08A22398DA400D5811A /* GoogleService-Info.plist */; };
 		FE3DF0FE7D7B50242580E019 /* Pods_FellowBloggerV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		D607F07F2239863400D5811A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D607F0822239863400D5811A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D607F0842239863400D5811A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D607F08A22398DA400D5811A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7015DB1C8EEEBE55104F953 /* Pods-FellowBloggerV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.release.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.release.xcconfig"; sourceTree = "<group>"; };
 		EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FellowBloggerV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 		D607F0772239863000D5811A /* FellowBloggerV2 */ = {
 			isa = PBXGroup;
 			children = (
+				D607F08A22398DA400D5811A /* GoogleService-Info.plist */,
 				D607F0782239863000D5811A /* AppDelegate.swift */,
 				D607F07A2239863000D5811A /* ViewController.swift */,
 				D607F07C2239863000D5811A /* Main.storyboard */,
@@ -85,7 +88,6 @@
 				9152184107A0F010718E1B78 /* Pods-FellowBloggerV2.debug.xcconfig */,
 				E7015DB1C8EEEBE55104F953 /* Pods-FellowBloggerV2.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -150,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D607F0832239863400D5811A /* LaunchScreen.storyboard in Resources */,
+				D607F08B22398DA400D5811A /* GoogleService-Info.plist in Resources */,
 				D607F0802239863400D5811A /* Assets.xcassets in Resources */,
 				D607F07E2239863000D5811A /* Main.storyboard in Resources */,
 			);
