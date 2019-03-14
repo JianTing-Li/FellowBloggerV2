@@ -7,15 +7,33 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    static var authservice = AuthService()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // check if user is login
+        if let _ = AppDelegate.authservice.getCurrentUser() {  // login
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let fellowBloggerTabBarController = storyboard.instantiateViewController(withIdentifier: "FellowBloggerTabBarController") as! UITabBarController
+            window?.rootViewController = fellowBloggerTabBarController
+        } else { // not login
+            let storyboard = UIStoryboard(name: "LoginView", bundle: nil)
+            let loginController = storyboard.instantiateViewController(withIdentifier: "LoginController") as! LoginController
+            window?.rootViewController = UINavigationController(rootViewController: loginController)
+        }
+        
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
