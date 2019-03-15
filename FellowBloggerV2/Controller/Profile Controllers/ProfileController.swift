@@ -9,7 +9,8 @@
 import UIKit
 
 class ProfileController: UIViewController {
-
+    
+   // private var profileHeaderView 
     override func viewDidLoad() {
         super.viewDidLoad()
         

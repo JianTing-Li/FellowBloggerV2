@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8n1-1k-kHs">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile Controller-->
+        <scene sceneID="VB3-qX-DNV">
+            <objects>
+                <viewController id="rzO-Yb-lq3" customClass="ProfileController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6HH-xO-NAi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gxi-qO-JMK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlogCell" id="6n2-oo-XA1">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6n2-oo-XA1" id="KVV-LO-FZo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="E8D-uL-5if" kind="show" id="wtO-DG-pC4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gxi-qO-JMK" firstAttribute="leading" secondItem="7S4-Mk-jMZ" secondAttribute="leading" id="G1j-et-0Vs"/>
+                            <constraint firstItem="7S4-Mk-jMZ" firstAttribute="trailing" secondItem="gxi-qO-JMK" secondAttribute="trailing" id="acU-67-jhQ"/>
+                            <constraint firstItem="gxi-qO-JMK" firstAttribute="top" secondItem="7S4-Mk-jMZ" secondAttribute="top" id="aez-mN-hCg"/>
+                            <constraint firstItem="7S4-Mk-jMZ" firstAttribute="bottom" secondItem="gxi-qO-JMK" secondAttribute="bottom" id="u1C-JK-DdS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7S4-Mk-jMZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xsH-xs-5AM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="elP-Ov-U8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="876"/>
+        </scene>
+        <!--Edit Profile Controller-->
+        <scene sceneID="uyj-B5-hoH">
+            <objects>
+                <viewController id="dAy-5j-Sdn" customClass="EditProfileController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N2g-KH-GSM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Yzt-hA-CYb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="90L-uX-F19"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rDB-jR-TrS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1286" y="1585"/>
+        </scene>
+        <!--Edit Profile Detail Controller-->
+        <scene sceneID="xhR-ay-ocg">
+            <objects>
+                <viewController id="B3S-ND-NeA" customClass="EditProfileDetailController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ab-MK-A1e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="81a-fM-2ib"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jCf-A0-ezM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2271" y="1588"/>
+        </scene>
+        <!--Search Blogger Controller-->
+        <scene sceneID="4Ko-pM-nLX">
+            <objects>
+                <viewController id="sT2-eT-j5K" customClass="SearchBloggerController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fds-Lo-FHK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3ME-rV-FaY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4DT-yf-h1A">
+                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jvB-bo-AIo">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jvB-bo-AIo" id="WXB-fA-k0k">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4DT-yf-h1A" firstAttribute="bottom" secondItem="O6O-lk-Syu" secondAttribute="bottom" id="flk-1Z-9z6"/>
+                            <constraint firstItem="3ME-rV-FaY" firstAttribute="top" secondItem="O6O-lk-Syu" secondAttribute="top" id="mgc-gW-plx"/>
+                            <constraint firstItem="3ME-rV-FaY" firstAttribute="leading" secondItem="O6O-lk-Syu" secondAttribute="leading" id="nvU-PF-hWP"/>
+                            <constraint firstItem="4DT-yf-h1A" firstAttribute="trailing" secondItem="O6O-lk-Syu" secondAttribute="trailing" id="vIk-AB-OY8"/>
+                            <constraint firstItem="4DT-yf-h1A" firstAttribute="top" secondItem="3ME-rV-FaY" secondAttribute="bottom" id="vdh-8u-kMl"/>
+                            <constraint firstItem="3ME-rV-FaY" firstAttribute="trailing" secondItem="O6O-lk-Syu" secondAttribute="trailing" id="whG-mb-ems"/>
+                            <constraint firstItem="4DT-yf-h1A" firstAttribute="leading" secondItem="O6O-lk-Syu" secondAttribute="leading" id="yyP-kp-sim"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O6O-lk-Syu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="p6Q-oC-eqx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFv-E5-ppJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="165.96701649175412"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Fcc-4z-l5O">
+            <objects>
+                <tabBarController storyboardIdentifier="FellowBloggerTabBarController" id="4cM-rR-ibK" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JO9-Dk-yHL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="8n1-1k-kHs" kind="relationship" relationship="viewControllers" id="Y9d-Al-sXc"/>
+                        <segue destination="U1p-A3-5rU" kind="relationship" relationship="viewControllers" id="QnP-MY-ObY"/>
+                        <segue destination="Edw-kh-ca4" kind="relationship" relationship="viewControllers" id="xXw-eG-ByQ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gbX-RU-1zb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1746" y="166"/>
+        </scene>
+        <!--Blog Feed Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="BlogFeedController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kVr-I9-tmJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlogCell" id="J8a-EU-rfZ">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J8a-EU-rfZ" id="x4v-na-Y4K">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="E8D-uL-5if" kind="show" id="6MX-vl-tc4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kVr-I9-tmJ" secondAttribute="bottom" id="TTS-FX-hf7"/>
+                            <constraint firstItem="kVr-I9-tmJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UJy-k3-yhV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kVr-I9-tmJ" secondAttribute="trailing" id="XU6-r7-NT9"/>
+                            <constraint firstItem="kVr-I9-tmJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jKr-GC-gID"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8nb-8J-SsZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OQI-eM-VcL"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="-553.67316341829087"/>
+        </scene>
+        <!--Add Blog Controller-->
+        <scene sceneID="oZM-yx-5D9">
+            <objects>
+                <viewController id="c7e-Tr-QYU" customClass="AddBlogController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dyi-Mr-Yzb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7ih-HM-XU3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UEx-sY-MUw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H0r-eX-0al" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1287" y="-1293"/>
+        </scene>
+        <!--Blog Feed Detail Controller-->
+        <scene sceneID="gcH-9B-URf">
+            <objects>
+                <viewController id="E8D-uL-5if" customClass="BlogFeedDetailController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bsC-KD-DV2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="lfX-Vr-3kE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpX-mq-nyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2270" y="-554"/>
+        </scene>
+        <!--Edit Blog Controller-->
+        <scene sceneID="lPZ-aZ-4ro">
+            <objects>
+                <viewController id="6aI-9c-5qx" customClass="EditBlogController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hK6-Qw-yRd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="h2I-a9-Z8e"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Yly-PY-vUk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="76N-5k-lOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4004" y="-554"/>
+        </scene>
+        <!--Blog Feed-->
+        <scene sceneID="QqH-TE-Pfd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8n1-1k-kHs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Blog Feed" image="icons8-blogger" selectedImage="icons8-blogger_filled" id="NDA-tw-DXa"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fgf-dO-fhq">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Mvs-fd-9jj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ur-hl-57e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-591.20000000000005" y="-553.67316341829087"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8g9-7L-B0d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z1T-fl-nWa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HJG-eM-y19">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="c7e-Tr-QYU" kind="relationship" relationship="rootViewController" id="LTi-vh-Lpd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u1m-h9-cJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="-1293"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rdB-cg-kCu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cyi-YI-0nL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T0W-UV-mc1">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6aI-9c-5qx" kind="relationship" relationship="rootViewController" id="UK3-Do-4fN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ru-Xf-T38" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3134" y="-554"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wZG-sO-qLo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gn7-Ck-Hd1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyd-4q-SLE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dAy-5j-Sdn" kind="relationship" relationship="rootViewController" id="ZFB-rx-39b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5wT-At-K1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="1585"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="cKA-wN-lWt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Edw-kh-ca4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="icons8-mts" selectedImage="icons8-mts_filled" id="IC8-Iz-fCS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xry-xA-aPm">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rzO-Yb-lq3" kind="relationship" relationship="rootViewController" id="kj3-2Z-kmE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F92-DL-UDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-591" y="876"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="53c-PD-qAg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U1p-A3-5rU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="opt-f5-u6I"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UV2-oD-9LC">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sT2-eT-j5K" kind="relationship" relationship="rootViewController" id="3GO-1U-1ss"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p7O-YW-itG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-591" y="166"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icons8-blogger" width="25" height="25"/>
+        <image name="icons8-blogger_filled" width="25" height="25"/>
+        <image name="icons8-mts" width="25" height="25"/>
+        <image name="icons8-mts_filled" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wtO-DG-pC4"/>
+    </inferredMetricsTieBreakers>
+</document>
