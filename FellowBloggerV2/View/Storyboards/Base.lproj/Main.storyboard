@@ -46,6 +46,9 @@
                         <viewLayoutGuide key="safeArea" id="7S4-Mk-jMZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="xsH-xs-5AM"/>
+                    <connections>
+                        <outlet property="profileBlogTableView" destination="gxi-qO-JMK" id="HMc-0U-dnL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elP-Ov-U8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

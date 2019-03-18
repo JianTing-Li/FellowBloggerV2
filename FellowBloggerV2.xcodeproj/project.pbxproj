@@ -33,10 +33,12 @@
 		D607F0BC223C154000D5811A /* BlogFeedDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0BB223C154000D5811A /* BlogFeedDetailController.swift */; };
 		D607F0BE223C158700D5811A /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0BD223C158700D5811A /* EditProfileController.swift */; };
 		D607F0C0223C168B00D5811A /* EditProfileDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0BF223C168B00D5811A /* EditProfileDetailController.swift */; };
-		D607F0C4223C35F000D5811A /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D607F0C3223C35F000D5811A /* ProfileCell.xib */; };
 		D607F0C6223C36DE00D5811A /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0C5223C36DE00D5811A /* ProfileHeaderView.swift */; };
 		D607F0CA223C3A1D00D5811A /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D607F0C9223C3A1D00D5811A /* ProfileHeaderView.xib */; };
 		D607F0CC223C4EE600D5811A /* IBDesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0CB223C4EE600D5811A /* IBDesignableViews.swift */; };
+		D607F0CE223F4EA800D5811A /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0CD223F4EA800D5811A /* BlogCell.swift */; };
+		D6AA0851223F5C02001E3770 /* VC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AA0850223F5C02001E3770 /* VC+Navigation.swift */; };
+		D6AA0853223F5CD8001E3770 /* FellowBloggerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */; };
 		FE3DF0FE7D7B50242580E019 /* Pods_FellowBloggerV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,10 +72,12 @@
 		D607F0BB223C154000D5811A /* BlogFeedDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogFeedDetailController.swift; sourceTree = "<group>"; };
 		D607F0BD223C158700D5811A /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		D607F0BF223C168B00D5811A /* EditProfileDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileDetailController.swift; sourceTree = "<group>"; };
-		D607F0C3223C35F000D5811A /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		D607F0C5223C36DE00D5811A /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		D607F0C9223C3A1D00D5811A /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		D607F0CB223C4EE600D5811A /* IBDesignableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableViews.swift; sourceTree = "<group>"; };
+		D607F0CD223F4EA800D5811A /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
+		D6AA0850223F5C02001E3770 /* VC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+Navigation.swift"; sourceTree = "<group>"; };
+		D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FellowBloggerTabBarController.swift; sourceTree = "<group>"; };
 		E7015DB1C8EEEBE55104F953 /* Pods-FellowBloggerV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.release.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.release.xcconfig"; sourceTree = "<group>"; };
 		EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FellowBloggerV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -157,6 +161,7 @@
 				D607F09B22399A6500D5811A /* String+Date.swift */,
 				D607F0AD223AF7CC00D5811A /* VC+Extensions.swift */,
 				D607F0AF223AF8EC00D5811A /* UIColor+Extensions.swift */,
+				D6AA0850223F5C02001E3770 /* VC+Navigation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 				D607F0C2223C16CD00D5811A /* Blog Feed Controllers */,
 				D607F0A2223AE75F00D5811A /* SearchBloggerController.swift */,
 				D607F0C1223C169A00D5811A /* Profile Controllers */,
+				D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,7 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				D607F0B2223C090600D5811A /* BlogCell.xib */,
-				D607F0C3223C35F000D5811A /* ProfileCell.xib */,
+				D607F0CD223F4EA800D5811A /* BlogCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -312,7 +318,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D607F0832239863400D5811A /* LaunchScreen.storyboard in Resources */,
-				D607F0C4223C35F000D5811A /* ProfileCell.xib in Resources */,
 				D607F08B22398DA400D5811A /* GoogleService-Info.plist in Resources */,
 				D607F0CA223C3A1D00D5811A /* ProfileHeaderView.xib in Resources */,
 				D607F0802239863400D5811A /* Assets.xcassets in Resources */,
@@ -396,12 +401,15 @@
 			files = (
 				D607F0922239941000D5811A /* StorageService.swift in Sources */,
 				D607F0B0223AF8EC00D5811A /* UIColor+Extensions.swift in Sources */,
+				D6AA0851223F5C02001E3770 /* VC+Navigation.swift in Sources */,
 				D607F0AC223AEB1100D5811A /* RegisterController.swift in Sources */,
 				D607F0B8223C133C00D5811A /* AddBlogController.swift in Sources */,
+				D6AA0853223F5CD8001E3770 /* FellowBloggerTabBarController.swift in Sources */,
 				D607F0C6223C36DE00D5811A /* ProfileHeaderView.swift in Sources */,
 				D607F0AA223AEB0500D5811A /* LoginController.swift in Sources */,
 				D607F09A22399A3E00D5811A /* Date+Extensions.swift in Sources */,
 				D607F08E223993E700D5811A /* AuthService.swift in Sources */,
+				D607F0CE223F4EA800D5811A /* BlogCell.swift in Sources */,
 				D607F0BE223C158700D5811A /* EditProfileController.swift in Sources */,
 				D607F0CC223C4EE600D5811A /* IBDesignableViews.swift in Sources */,
 				D607F0972239951100D5811A /* Blogger.swift in Sources */,
