@@ -169,7 +169,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="E8D-uL-5if" kind="show" id="6MX-vl-tc4"/>
+                                            <segue destination="E8D-uL-5if" kind="show" identifier="Show Blog Details" id="6MX-vl-tc4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -187,6 +187,9 @@
                     <navigationItem key="navigationItem" id="8nb-8J-SsZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OQI-eM-VcL"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="blogFeedTableView" destination="kVr-I9-tmJ" id="Q8M-Ay-CvQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -358,6 +361,6 @@
         <image name="icons8-mts_filled" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wtO-DG-pC4"/>
+        <segue reference="6MX-vl-tc4"/>
     </inferredMetricsTieBreakers>
 </document>

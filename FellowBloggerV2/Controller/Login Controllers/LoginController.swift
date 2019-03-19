@@ -43,6 +43,7 @@ extension LoginController: AuthServiceExistingAccountDelegate {
         fellowBloggerTabBarController.modalTransitionStyle = .crossDissolve
         fellowBloggerTabBarController.modalPresentationStyle = .overFullScreen
         present(fellowBloggerTabBarController, animated: true)
+        // TODO: remove VC
     }
     
     

@@ -65,6 +65,21 @@ final class DBService {
         }
     }
     
+    // query fuction to get dishes for specific user
+    static public func getBlogger(userId: String, completion: @escaping (Error?, Blogger?) -> Void) {
+        DBService.firestoreDB
+            .collection(BloggersCollectionKeys.CollectionKey)
+            .whereField(BloggersCollectionKeys.BloggerIdKey, isEqualTo: userId)
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    completion(error, nil)
+                } else if let snapshot = snapshot?.documents.first {
+                    let blogger = Blogger(dict: snapshot.data())
+                    completion(nil, blogger)
+                }
+        }
+    }
+    
     static public func postBlog(blog: Blog) {
         firestoreDB.collection(BlogsCollectionKeys.CollectionKey)
             .document(blog.documentId).setData([

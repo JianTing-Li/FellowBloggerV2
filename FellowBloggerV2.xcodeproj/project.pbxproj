@@ -193,8 +193,6 @@
 			children = (
 				D607F07C2239863000D5811A /* Main.storyboard */,
 				D607F09E223A343A00D5811A /* LoginView.storyboard */,
-				D607F0C5223C36DE00D5811A /* ProfileHeaderView.swift */,
-				D607F0C9223C3A1D00D5811A /* ProfileHeaderView.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -212,8 +210,10 @@
 			isa = PBXGroup;
 			children = (
 				D607F0CB223C4EE600D5811A /* IBDesignableViews.swift */,
-				D607F0A7223AE8E000D5811A /* Storyboards */,
+				D607F0C5223C36DE00D5811A /* ProfileHeaderView.swift */,
+				D607F0C9223C3A1D00D5811A /* ProfileHeaderView.xib */,
 				D607F0B4223C099200D5811A /* Custom Cells */,
+				D607F0A7223AE8E000D5811A /* Storyboards */,
 			);
 			path = View;
 			sourceTree = "<group>";

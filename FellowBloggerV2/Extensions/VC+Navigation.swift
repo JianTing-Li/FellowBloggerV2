@@ -11,12 +11,14 @@ import UIKit
 extension UIViewController {
     public func showLoginView() {
         if let _ = storyboard?.instantiateViewController(withIdentifier: "FellowBloggerTabBarController") as? FellowBloggerTabBarController {
+            dismiss(animated: true)
             let loginViewStoryboard = UIStoryboard(name: "LoginView", bundle: nil)
             if let loginController = loginViewStoryboard.instantiateViewController(withIdentifier: "LoginController") as? LoginController {
                 (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = loginController
             } else {
-                dismiss(animated: true, completion: nil)
+                dismiss(animated: true)
             }
         }
     }
 }
+

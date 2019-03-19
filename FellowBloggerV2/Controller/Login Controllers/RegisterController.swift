@@ -47,5 +47,6 @@ extension RegisterController: AuthServiceCreateNewAccountDelegate {
         fellowBloggerTabBarController.modalTransitionStyle = .crossDissolve
         fellowBloggerTabBarController.modalPresentationStyle = .overFullScreen
         present(fellowBloggerTabBarController, animated: true)
+        // TODO: Remove VC
     }
 }

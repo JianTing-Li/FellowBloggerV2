@@ -151,18 +151,3 @@ extension ProfileController: ProfileHeaderViewDelegate {
 //            performSegue(withIdentifier: "Show Edit Profile", sender: nil)
     }
 }
-
-// This goes in the BlogFeedController
-//extension ProfileController: AuthServiceSignOutDelegate {
-//    //  authservice.authservicesSignOutDelegate = self
-//    //  private var listener: ListenerRegistration!
-//    func didSignOutWithError(_ authservice: AuthService, error: Error) {
-//        listener.remove()
-//        showLoginView()
-//        // bug visual bug stack is stacking (need to pop the VCS) --- maybe use a smaller project
-//    }
-//
-//    func didSignOut(_ authservice: AuthService) {
-//        showAlert(title: "Sign Out Error", message: "Unable to Sign out.")
-//    }
-//}
