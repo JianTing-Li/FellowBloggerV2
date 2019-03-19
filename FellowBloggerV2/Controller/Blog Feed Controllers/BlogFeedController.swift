@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import Kingfisher
-import Toucan
 
 class BlogFeedController: UIViewController {
     
@@ -128,7 +127,7 @@ extension BlogFeedController: UITableViewDataSource {
 
 extension BlogFeedController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return Constants.BlogCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

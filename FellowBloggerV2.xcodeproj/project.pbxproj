@@ -41,6 +41,7 @@
 		D6AA0853223F5CD8001E3770 /* FellowBloggerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */; };
 		D6C7A73E2240B76700B1B1DD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7A73D2240B76700B1B1DD /* Comment.swift */; };
 		D6C7A7402240B7AE00B1B1DD /* LikeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7A73F2240B7AE00B1B1DD /* LikeStatus.swift */; };
+		D6C7A7432241443000B1B1DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7A7422241443000B1B1DD /* Constants.swift */; };
 		FE3DF0FE7D7B50242580E019 /* Pods_FellowBloggerV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FellowBloggerTabBarController.swift; sourceTree = "<group>"; };
 		D6C7A73D2240B76700B1B1DD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		D6C7A73F2240B7AE00B1B1DD /* LikeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeStatus.swift; sourceTree = "<group>"; };
+		D6C7A7422241443000B1B1DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E7015DB1C8EEEBE55104F953 /* Pods-FellowBloggerV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.release.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.release.xcconfig"; sourceTree = "<group>"; };
 		EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FellowBloggerV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 				D607F093223994F600D5811A /* Model */,
 				D607F09D22399A9300D5811A /* Controller */,
 				D607F09822399A1F00D5811A /* Extensions */,
+				D6C7A7412241441C00B1B1DD /* Utilities */,
 				D607F0A6223AE8CB00D5811A /* Supporting Files */,
 				D607F08A22398DA400D5811A /* GoogleService-Info.plist */,
 				D607F0842239863400D5811A /* Info.plist */,
@@ -252,6 +255,14 @@
 				D607F0B9223C14B400D5811A /* EditBlogController.swift */,
 			);
 			path = "Blog Feed Controllers";
+			sourceTree = "<group>";
+		};
+		D6C7A7412241441C00B1B1DD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D6C7A7422241443000B1B1DD /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		EDDEFBE13C65ED475D05F13B /* Pods */ = {
@@ -416,6 +427,7 @@
 				D607F09A22399A3E00D5811A /* Date+Extensions.swift in Sources */,
 				D607F08E223993E700D5811A /* AuthService.swift in Sources */,
 				D607F0CE223F4EA800D5811A /* BlogCell.swift in Sources */,
+				D6C7A7432241443000B1B1DD /* Constants.swift in Sources */,
 				D607F0BE223C158700D5811A /* EditProfileController.swift in Sources */,
 				D607F0CC223C4EE600D5811A /* IBDesignableViews.swift in Sources */,
 				D607F0972239951100D5811A /* Blogger.swift in Sources */,

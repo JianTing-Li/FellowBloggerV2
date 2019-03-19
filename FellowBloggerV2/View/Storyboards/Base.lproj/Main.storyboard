@@ -185,7 +185,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="8nb-8J-SsZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OQI-eM-VcL"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OQI-eM-VcL">
+                            <connections>
+                                <segue destination="Z1T-fl-nWa" kind="presentation" identifier="Add Blog" id="evU-ts-fxY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="blogFeedTableView" destination="kVr-I9-tmJ" id="Q8M-Ay-CvQ"/>
@@ -202,14 +206,51 @@
                     <view key="view" contentMode="scaleToFill" id="dyi-Mr-Yzb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Give your post some color..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vsv-1c-gbT">
+                                <rect key="frame" x="16" y="80" width="343" height="200"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="WU3-3n-jQ8">
+                                <rect key="frame" x="16" y="288" width="343" height="359"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7ih-HM-XU3" firstAttribute="bottom" secondItem="WU3-3n-jQ8" secondAttribute="bottom" constant="20" id="RoH-QL-cXB"/>
+                            <constraint firstItem="WU3-3n-jQ8" firstAttribute="leading" secondItem="7ih-HM-XU3" secondAttribute="leading" constant="16" id="S8z-28-nnl"/>
+                            <constraint firstItem="Vsv-1c-gbT" firstAttribute="height" secondItem="dyi-Mr-Yzb" secondAttribute="height" multiplier="0.3" id="ZTT-Gb-O4L"/>
+                            <constraint firstItem="WU3-3n-jQ8" firstAttribute="top" secondItem="Vsv-1c-gbT" secondAttribute="bottom" constant="8" id="a2T-hQ-jDb"/>
+                            <constraint firstItem="7ih-HM-XU3" firstAttribute="trailing" secondItem="Vsv-1c-gbT" secondAttribute="trailing" constant="16" id="cyF-K1-KYM"/>
+                            <constraint firstItem="7ih-HM-XU3" firstAttribute="trailing" secondItem="WU3-3n-jQ8" secondAttribute="trailing" constant="16" id="dRw-Nl-M11"/>
+                            <constraint firstItem="Vsv-1c-gbT" firstAttribute="top" secondItem="7ih-HM-XU3" secondAttribute="top" constant="16" id="ogj-pf-QA7"/>
+                            <constraint firstItem="Vsv-1c-gbT" firstAttribute="leading" secondItem="7ih-HM-XU3" secondAttribute="leading" constant="16" id="qbC-wD-QKH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7ih-HM-XU3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UEx-sY-MUw"/>
+                    <navigationItem key="navigationItem" id="UEx-sY-MUw">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="jNU-6e-lzf">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="c7e-Tr-QYU" id="mtI-0S-jL5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="Z5U-SJ-7BL">
+                            <connections>
+                                <action selector="postButtonPressed:" destination="c7e-Tr-QYU" id="hWL-Ba-Dlf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="blogDescriptionTextView" destination="Vsv-1c-gbT" id="A8l-H1-rvI"/>
+                        <outlet property="blogImageView" destination="WU3-3n-jQ8" id="aof-ww-HGv"/>
+                        <outlet property="postBarButton" destination="Z5U-SJ-7BL" id="V3V-HH-uJv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H0r-eX-0al" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="-1293"/>
+            <point key="canvasLocation" x="1285.5999999999999" y="-1293.1034482758621"/>
         </scene>
         <!--Blog Feed Detail Controller-->
         <scene sceneID="gcH-9B-URf">
@@ -359,6 +400,7 @@
         <image name="icons8-blogger_filled" width="25" height="25"/>
         <image name="icons8-mts" width="25" height="25"/>
         <image name="icons8-mts_filled" width="25" height="25"/>
+        <image name="placeholder" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6MX-vl-tc4"/>
