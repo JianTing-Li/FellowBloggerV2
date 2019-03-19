@@ -80,7 +80,7 @@ final class DBService {
         }
     }
     
-    static public func postBlog(blog: Blog) {
+    static public func postBlog(blog: Blog, completion: @escaping (Error?) -> Void) {
         firestoreDB.collection(BlogsCollectionKeys.CollectionKey)
             .document(blog.documentId).setData([
                 BlogsCollectionKeys.CreatedDateKey     : blog.createdDate,
@@ -91,8 +91,10 @@ final class DBService {
                 ])
             { (error) in
                 if let error = error {
+                    completion(error)
                     print("posting blog error: \(error)")
                 } else {
+                    completion(nil)
                     print("blog posted successfully to ref: \(blog.documentId)")
                 }
         }

@@ -245,7 +245,6 @@
                     <connections>
                         <outlet property="blogDescriptionTextView" destination="Vsv-1c-gbT" id="A8l-H1-rvI"/>
                         <outlet property="blogImageView" destination="WU3-3n-jQ8" id="aof-ww-HGv"/>
-                        <outlet property="postBarButton" destination="Z5U-SJ-7BL" id="V3V-HH-uJv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H0r-eX-0al" userLabel="First Responder" sceneMemberID="firstResponder"/>

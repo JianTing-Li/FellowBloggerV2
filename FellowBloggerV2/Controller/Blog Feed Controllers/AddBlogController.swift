@@ -11,7 +11,6 @@ import Toucan
 
 class AddBlogController: UIViewController {
 
-    @IBOutlet weak var postBarButton: UIBarButtonItem!
     @IBOutlet weak var blogDescriptionTextView: UITextView!
     @IBOutlet weak var blogImageView: UIImageView!
     
@@ -33,8 +32,47 @@ class AddBlogController: UIViewController {
     }
     
     @IBAction func postButtonPressed(_ sender: UIBarButtonItem) {
-        postBarButton.isEnabled = false
-        dismiss(animated: true, completion: nil)
+        // disable right away so there won't be multiple pressed
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        guard let blogDescription = blogDescriptionTextView.text,
+            !blogDescription.isEmpty,
+            let imageData = selectedImage?.jpegData(compressionQuality: 1.0) else {
+                print("Missing Fields")
+                return
+        }
+        guard let user = authservice.getCurrentUser() else {
+            print("no logged user")
+            return
+        }
+        
+        // create a documentId for each dish
+        // 1: generate a document id from firebase
+        // 2: this will be the unique id to retrieve the document
+        let docRef = DBService.firestoreDB.collection(BlogsCollectionKeys.CollectionKey).document()
+        
+        StorageService.postImage(imageData: imageData,
+                                 imageName: Constants.BlogImagePath + "\(user.uid)/\(docRef.documentID))") { [weak self] (error, imageURL) in
+                                    if let error = error {
+                                        print("Fail to post image with error: \(error.localizedDescription)")
+                                        self?.navigationItem.rightBarButtonItem?.isEnabled = true
+                                    } else if let imageURL = imageURL {
+                                        print("Image posted & received imageURL -> post blog to database: \(imageURL)")
+                                        let blog = Blog(createdDate: Date.getISOTimestamp(),
+                                                        bloggerId: user.uid,
+                                                        imageURL: imageURL.absoluteString,
+                                                        blogDescription: blogDescription,
+                                                        documentId: docRef.documentID)
+                                        DBService.postBlog(blog: blog, completion: { (error) in
+                                            if let error = error {
+                                                self?.showAlert(title: "Posting Blog Error", message: nil)
+                                            } else {
+                                                self?.showAlert(title: "Blog Posted", message: nil)
+                                                self?.dismiss(animated: true, completion: nil)
+                                            }
+                                        })
+                                        self?.navigationItem.rightBarButtonItem?.isEnabled = true
+                                    }
+        }
     }
 }
 

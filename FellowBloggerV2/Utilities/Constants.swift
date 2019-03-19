@@ -10,7 +10,8 @@ import UIKit
 
 struct Constants {
     static let BlogDescriptionPlaceholder = "Give your post some color..."
-//    static let DishImagePath = "nationalDishImages/" // nationalDishImages/{userId}/{documentId-goes-here}
-//    static let ProfileImagePath = "profileImages/" // profileImages/{userId}
+    static let BlogImagePath = "blogs"                  // "blogs/\(user.uid)/\(documentId)"
+    static let ProfileImage = "profileImages"           // "profileImages/\(user.uid)"
+    static let ProfileCoverImage = "coverImages"        // "coverImages/\(user.uid)"
     static let BlogCellHeight: CGFloat = 400.0
 }
