@@ -12,7 +12,7 @@
 - [x] user can view all blogs in the blog feed controller (sorted by most recent date, more here for [date helpers](https://github.com/alexpaul/SwiftyHelpers))
 - [ ] user can view all their created blogs in the profile view controller (sorted by most recent date)
 - [ ] user can edit their profile, edits include: profile photo, cover photo, first name, last name, username and bio 
-- [ ] user can create a blog post: post includes adding a photo from camera or photo library 
+- [x] user can create a blog post: post includes adding a photo from camera or photo library 
 - [ ] user can edit their blog post 
 - [ ] user can delete a blog post
 - [ ] selecting a blog post shows a detail view of the blog 
