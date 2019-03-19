@@ -39,6 +39,8 @@
 		D607F0CE223F4EA800D5811A /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0CD223F4EA800D5811A /* BlogCell.swift */; };
 		D6AA0851223F5C02001E3770 /* VC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AA0850223F5C02001E3770 /* VC+Navigation.swift */; };
 		D6AA0853223F5CD8001E3770 /* FellowBloggerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */; };
+		D6C7A73E2240B76700B1B1DD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7A73D2240B76700B1B1DD /* Comment.swift */; };
+		D6C7A7402240B7AE00B1B1DD /* LikeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7A73F2240B7AE00B1B1DD /* LikeStatus.swift */; };
 		FE3DF0FE7D7B50242580E019 /* Pods_FellowBloggerV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,8 @@
 		D607F0CD223F4EA800D5811A /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
 		D6AA0850223F5C02001E3770 /* VC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+Navigation.swift"; sourceTree = "<group>"; };
 		D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FellowBloggerTabBarController.swift; sourceTree = "<group>"; };
+		D6C7A73D2240B76700B1B1DD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		D6C7A73F2240B7AE00B1B1DD /* LikeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeStatus.swift; sourceTree = "<group>"; };
 		E7015DB1C8EEEBE55104F953 /* Pods-FellowBloggerV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.release.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.release.xcconfig"; sourceTree = "<group>"; };
 		EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FellowBloggerV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,6 +154,8 @@
 			children = (
 				D607F0942239950700D5811A /* Blog.swift */,
 				D607F0962239951100D5811A /* Blogger.swift */,
+				D6C7A73D2240B76700B1B1DD /* Comment.swift */,
+				D6C7A73F2240B7AE00B1B1DD /* LikeStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,7 +426,9 @@
 				D607F0A3223AE75F00D5811A /* SearchBloggerController.swift in Sources */,
 				D607F0A5223AE77100D5811A /* ProfileController.swift in Sources */,
 				D607F07B2239863000D5811A /* BlogFeedController.swift in Sources */,
+				D6C7A73E2240B76700B1B1DD /* Comment.swift in Sources */,
 				D607F0BA223C14B400D5811A /* EditBlogController.swift in Sources */,
+				D6C7A7402240B7AE00B1B1DD /* LikeStatus.swift in Sources */,
 				D607F09C22399A6500D5811A /* String+Date.swift in Sources */,
 				D607F0C0223C168B00D5811A /* EditProfileDetailController.swift in Sources */,
 				D607F0792239863000D5811A /* AppDelegate.swift in Sources */,
