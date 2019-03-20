@@ -8,9 +8,6 @@
 
 import Foundation
 
-// jt@mocha.com
-// mocha88
-
 struct Blogger {
     let bloggerId: String
     let displayName: String
