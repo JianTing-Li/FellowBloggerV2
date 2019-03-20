@@ -168,8 +168,8 @@
 			children = (
 				D607F09922399A3E00D5811A /* Date+Extensions.swift */,
 				D607F09B22399A6500D5811A /* String+Date.swift */,
-				D607F0AD223AF7CC00D5811A /* VC+Extensions.swift */,
 				D607F0AF223AF8EC00D5811A /* UIColor+Extensions.swift */,
+				D607F0AD223AF7CC00D5811A /* VC+Extensions.swift */,
 				D6AA0850223F5C02001E3770 /* VC+Navigation.swift */,
 			);
 			path = Extensions;
