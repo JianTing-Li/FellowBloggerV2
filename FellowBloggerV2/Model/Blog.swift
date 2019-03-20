@@ -27,7 +27,7 @@ struct Blog {
         self.createdDate = dict[BlogsCollectionKeys.CreatedDateKey] as? String ?? "no date"
         self.bloggerId = dict[BlogsCollectionKeys.BloggerIdKey] as? String ?? "no blogger id"
         self.imageURL = dict[BlogsCollectionKeys.ImageURLKey] as? String ?? "no imageURL"
-        self.blogDescription = dict[BlogsCollectionKeys.BlogDescritionKey] as? String ?? "no description"
+        self.blogDescription = dict[BlogsCollectionKeys.BlogDescriptionKey] as? String ?? "no description"
         self.documentId = dict[BlogsCollectionKeys.DocumentIdKey] as? String ?? "no document id"
     }
 }

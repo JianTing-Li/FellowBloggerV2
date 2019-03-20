@@ -391,8 +391,16 @@ Reference counting applies only to instances of classes. Structures and enumerat
                         <viewLayoutGuide key="safeArea" id="h2I-a9-Z8e"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Blog" id="Yly-PY-vUk">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="XdP-oO-sWy"/>
-                        <barButtonItem key="rightBarButtonItem" title="Update" id="gvG-Ve-2td"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="XdP-oO-sWy">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="6aI-9c-5qx" id="8zr-BR-5W6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Update" id="gvG-Ve-2td">
+                            <connections>
+                                <action selector="updateBlogButtonPressed:" destination="6aI-9c-5qx" id="kJR-H5-cDV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="blogDescriptionTextView" destination="Yzr-dU-jPv" id="Ssu-oy-kgT"/>

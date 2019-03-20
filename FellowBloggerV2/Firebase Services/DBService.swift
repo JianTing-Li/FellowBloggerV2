@@ -25,7 +25,7 @@ struct BloggersCollectionKeys {
 
 struct BlogsCollectionKeys {
     static let CollectionKey = "blogs"
-    static let BlogDescritionKey = "blogDescription"
+    static let BlogDescriptionKey = "blogDescription"
     static let BloggerIdKey = "bloggerId"
     static let CreatedDateKey = "createdDate"
     static let DocumentIdKey = "documentId"
@@ -91,7 +91,7 @@ final class DBService {
             .document(blog.documentId).setData([
                 BlogsCollectionKeys.CreatedDateKey     : blog.createdDate,
                 BlogsCollectionKeys.BloggerIdKey       : blog.bloggerId,
-                BlogsCollectionKeys.BlogDescritionKey  : blog.blogDescription,
+                BlogsCollectionKeys.BlogDescriptionKey  : blog.blogDescription,
                 BlogsCollectionKeys.ImageURLKey        : blog.imageURL,
                 BlogsCollectionKeys.DocumentIdKey      : blog.documentId
                 ])
