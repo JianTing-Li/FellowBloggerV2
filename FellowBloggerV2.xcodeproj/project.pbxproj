@@ -10,7 +10,6 @@
 		D607F0792239863000D5811A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0782239863000D5811A /* AppDelegate.swift */; };
 		D607F07B2239863000D5811A /* BlogFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F07A2239863000D5811A /* BlogFeedController.swift */; };
 		D607F07E2239863000D5811A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D607F07C2239863000D5811A /* Main.storyboard */; };
-		D607F0802239863400D5811A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D607F07F2239863400D5811A /* Assets.xcassets */; };
 		D607F0832239863400D5811A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D607F0812239863400D5811A /* LaunchScreen.storyboard */; };
 		D607F08B22398DA400D5811A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D607F08A22398DA400D5811A /* GoogleService-Info.plist */; };
 		D607F08E223993E700D5811A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F08D223993E700D5811A /* AuthService.swift */; };
@@ -42,6 +41,7 @@
 		D6C7A73E2240B76700B1B1DD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7A73D2240B76700B1B1DD /* Comment.swift */; };
 		D6C7A7402240B7AE00B1B1DD /* LikeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7A73F2240B7AE00B1B1DD /* LikeStatus.swift */; };
 		D6C7A7432241443000B1B1DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7A7422241443000B1B1DD /* Constants.swift */; };
+		D6C7A74522418D0A00B1B1DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6C7A74422418D0900B1B1DD /* Assets.xcassets */; };
 		FE3DF0FE7D7B50242580E019 /* Pods_FellowBloggerV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +51,6 @@
 		D607F0782239863000D5811A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D607F07A2239863000D5811A /* BlogFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogFeedController.swift; sourceTree = "<group>"; };
 		D607F07D2239863000D5811A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D607F07F2239863400D5811A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D607F0822239863400D5811A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D607F0842239863400D5811A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D607F08A22398DA400D5811A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		D6C7A73D2240B76700B1B1DD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		D6C7A73F2240B7AE00B1B1DD /* LikeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeStatus.swift; sourceTree = "<group>"; };
 		D6C7A7422241443000B1B1DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D6C7A74422418D0900B1B1DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7015DB1C8EEEBE55104F953 /* Pods-FellowBloggerV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.release.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.release.xcconfig"; sourceTree = "<group>"; };
 		EAF9C89D8E90B5389BDBC744 /* Pods_FellowBloggerV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FellowBloggerV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -191,8 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				D607F0782239863000D5811A /* AppDelegate.swift */,
+				D6C7A74422418D0900B1B1DD /* Assets.xcassets */,
 				D607F0812239863400D5811A /* LaunchScreen.storyboard */,
-				D607F07F2239863400D5811A /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -337,8 +337,8 @@
 				D607F0832239863400D5811A /* LaunchScreen.storyboard in Resources */,
 				D607F08B22398DA400D5811A /* GoogleService-Info.plist in Resources */,
 				D607F0CA223C3A1D00D5811A /* ProfileHeaderView.xib in Resources */,
-				D607F0802239863400D5811A /* Assets.xcassets in Resources */,
 				D607F07E2239863000D5811A /* Main.storyboard in Resources */,
+				D6C7A74522418D0A00B1B1DD /* Assets.xcassets in Resources */,
 				D607F09F223A343A00D5811A /* LoginView.storyboard in Resources */,
 				D607F0B3223C090600D5811A /* BlogCell.xib in Resources */,
 			);

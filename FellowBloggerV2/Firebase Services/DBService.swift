@@ -80,6 +80,12 @@ final class DBService {
         }
     }
     
+    // writing to firebase:
+    // 1. we need a reference to the database - DBService.firestoreDB
+    // 2. what collection are you writing to? e.g. "blogs" (BlogsCollectionKeys.CollectionKey)
+    // 3. write to the collection e.g. setData, updateData, delete
+    // create new document - use setData
+    // update exisgting document - use updateData
     static public func postBlog(blog: Blog, completion: @escaping (Error?) -> Void) {
         firestoreDB.collection(BlogsCollectionKeys.CollectionKey)
             .document(blog.documentId).setData([
@@ -96,6 +102,23 @@ final class DBService {
                 } else {
                     completion(nil)
                     print("blog posted successfully to ref: \(blog.documentId)")
+                }
+        }
+    }
+    
+    static public func deleteDish(blog: Blog, completion: @escaping (Error?) -> Void) {
+         // Steps for deleting
+                // step 1 --> we need the database reference (DBService.firestoreDB)
+                // step 2 --> get the collection we're interested in "(.collection(BlogsCollectionKeys.CollectionKey)"
+                // step 3 --> pass in the document id you want to delete (constant time like a  array w/ an index passed in)
+        DBService.firestoreDB
+            .collection(BlogsCollectionKeys.CollectionKey)
+            .document(blog.documentId)
+            .delete { (error) in
+                if let error = error {
+                    completion(error)
+                } else {
+                    completion(nil)
                 }
         }
     }

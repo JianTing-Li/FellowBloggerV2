@@ -75,23 +75,13 @@ class BlogFeedController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "Show Dish Details" {
-//            guard let indexPath = sender as? IndexPath,
-//                let cell = tableView.cellForRow(at: indexPath) as? DishCell,
-//                let dishDVC = segue.destination as? DishDetailViewController else {
-//                    fatalError("cannot segue to dishDVC")
-//            }
-//            let dish = dishes[indexPath.row]
-//            dishDVC.displayName = cell.displayNameLabel.text
-//            dishDVC.dish = dish
-//        }
         if segue.identifier == "Show Blog Details" {
             guard let indexPath = sender as? IndexPath,
-                let cell = blogFeedTableView.cellForRow(at: indexPath) as? BlogCell,
                 let blogDVC = segue.destination as? BlogFeedDetailController else {
                     fatalError("Cannot Segue to BlogDVC")
             }
-            let blog = blogs[indexPath.row]
+            let selectedBlog = blogs[indexPath.row]
+            blogDVC.blog = selectedBlog
         }
     }
 
