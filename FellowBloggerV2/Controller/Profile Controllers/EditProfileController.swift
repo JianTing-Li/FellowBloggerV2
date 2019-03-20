@@ -8,11 +8,15 @@
 
 import UIKit
 
+// First Name
+// Last Name
+// Username
+// Bio (regular cell)
+
 class EditProfileController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
 }

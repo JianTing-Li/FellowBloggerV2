@@ -14,10 +14,14 @@ protocol ProfileHeaderViewDelegate: AnyObject {
 }
 
 class ProfileHeaderView: UIView {
+    
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var profieImageView: UIImageView!
+    
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var signoutButton: UIButton!
+    
+    @IBOutlet weak var profieImageView: UIImageView!
+    @IBOutlet weak var coverPhotoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var bioLabel: UILabel!

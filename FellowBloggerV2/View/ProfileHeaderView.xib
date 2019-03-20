@@ -14,7 +14,8 @@
             <connections>
                 <outlet property="bioLabel" destination="gwh-Uy-prf" id="0We-SF-Jix"/>
                 <outlet property="contentView" destination="Flw-9d-l5K" id="rgT-8h-7bK"/>
-                <outlet property="displayNameLabel" destination="O4i-14-3eg" id="2O9-0R-Uys"/>
+                <outlet property="coverPhotoImageView" destination="fcV-iT-9GY" id="S4u-rJ-g21"/>
+                <outlet property="displayNameLabel" destination="75R-tB-X5f" id="tQ4-n2-5fO"/>
                 <outlet property="editProfileButton" destination="XK1-dT-cJU" id="Vyv-Gn-RKR"/>
                 <outlet property="nameLabel" destination="O4i-14-3eg" id="QM3-c0-x0W"/>
                 <outlet property="profieImageView" destination="DNC-un-AbH" id="eXR-yQ-vxy"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProfileDetailController: UIViewController {
+class EditBioDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

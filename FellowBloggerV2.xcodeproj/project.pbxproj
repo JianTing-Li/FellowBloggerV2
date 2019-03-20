@@ -31,11 +31,12 @@
 		D607F0BA223C14B400D5811A /* EditBlogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0B9223C14B400D5811A /* EditBlogController.swift */; };
 		D607F0BC223C154000D5811A /* BlogFeedDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0BB223C154000D5811A /* BlogFeedDetailController.swift */; };
 		D607F0BE223C158700D5811A /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0BD223C158700D5811A /* EditProfileController.swift */; };
-		D607F0C0223C168B00D5811A /* EditProfileDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0BF223C168B00D5811A /* EditProfileDetailController.swift */; };
+		D607F0C0223C168B00D5811A /* EditBioDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0BF223C168B00D5811A /* EditBioDetailController.swift */; };
 		D607F0C6223C36DE00D5811A /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0C5223C36DE00D5811A /* ProfileHeaderView.swift */; };
 		D607F0CA223C3A1D00D5811A /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D607F0C9223C3A1D00D5811A /* ProfileHeaderView.xib */; };
 		D607F0CC223C4EE600D5811A /* IBDesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0CB223C4EE600D5811A /* IBDesignableViews.swift */; };
 		D607F0CE223F4EA800D5811A /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0CD223F4EA800D5811A /* BlogCell.swift */; };
+		D68D33A82242D42400CD0D4D /* ProfileEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D33A72242D42400CD0D4D /* ProfileEditCell.swift */; };
 		D6AA0851223F5C02001E3770 /* VC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AA0850223F5C02001E3770 /* VC+Navigation.swift */; };
 		D6AA0853223F5CD8001E3770 /* FellowBloggerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */; };
 		D6C7A73E2240B76700B1B1DD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7A73D2240B76700B1B1DD /* Comment.swift */; };
@@ -73,11 +74,12 @@
 		D607F0B9223C14B400D5811A /* EditBlogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBlogController.swift; sourceTree = "<group>"; };
 		D607F0BB223C154000D5811A /* BlogFeedDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogFeedDetailController.swift; sourceTree = "<group>"; };
 		D607F0BD223C158700D5811A /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
-		D607F0BF223C168B00D5811A /* EditProfileDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileDetailController.swift; sourceTree = "<group>"; };
+		D607F0BF223C168B00D5811A /* EditBioDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioDetailController.swift; sourceTree = "<group>"; };
 		D607F0C5223C36DE00D5811A /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		D607F0C9223C3A1D00D5811A /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		D607F0CB223C4EE600D5811A /* IBDesignableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableViews.swift; sourceTree = "<group>"; };
 		D607F0CD223F4EA800D5811A /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
+		D68D33A72242D42400CD0D4D /* ProfileEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCell.swift; sourceTree = "<group>"; };
 		D6AA0850223F5C02001E3770 /* VC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+Navigation.swift"; sourceTree = "<group>"; };
 		D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FellowBloggerTabBarController.swift; sourceTree = "<group>"; };
 		D6C7A73D2240B76700B1B1DD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				D607F0B2223C090600D5811A /* BlogCell.xib */,
 				D607F0CD223F4EA800D5811A /* BlogCell.swift */,
+				D68D33A72242D42400CD0D4D /* ProfileEditCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -241,7 +244,7 @@
 			children = (
 				D607F0A4223AE77100D5811A /* ProfileController.swift */,
 				D607F0BD223C158700D5811A /* EditProfileController.swift */,
-				D607F0BF223C168B00D5811A /* EditProfileDetailController.swift */,
+				D607F0BF223C168B00D5811A /* EditBioDetailController.swift */,
 			);
 			path = "Profile Controllers";
 			sourceTree = "<group>";
@@ -437,12 +440,13 @@
 				D607F0AE223AF7CC00D5811A /* VC+Extensions.swift in Sources */,
 				D607F0A3223AE75F00D5811A /* SearchBloggerController.swift in Sources */,
 				D607F0A5223AE77100D5811A /* ProfileController.swift in Sources */,
+				D68D33A82242D42400CD0D4D /* ProfileEditCell.swift in Sources */,
 				D607F07B2239863000D5811A /* BlogFeedController.swift in Sources */,
 				D6C7A73E2240B76700B1B1DD /* Comment.swift in Sources */,
 				D607F0BA223C14B400D5811A /* EditBlogController.swift in Sources */,
 				D6C7A7402240B7AE00B1B1DD /* LikeStatus.swift in Sources */,
 				D607F09C22399A6500D5811A /* String+Date.swift in Sources */,
-				D607F0C0223C168B00D5811A /* EditProfileDetailController.swift in Sources */,
+				D607F0C0223C168B00D5811A /* EditBioDetailController.swift in Sources */,
 				D607F0792239863000D5811A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
