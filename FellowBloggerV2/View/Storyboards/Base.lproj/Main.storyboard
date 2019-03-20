@@ -48,6 +48,7 @@
                     <navigationItem key="navigationItem" id="xsH-xs-5AM"/>
                     <connections>
                         <outlet property="profileBlogTableView" destination="gxi-qO-JMK" id="HMc-0U-dnL"/>
+                        <segue destination="Gn7-Ck-Hd1" kind="presentation" id="VzX-lI-Ad9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elP-Ov-U8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,48 +272,46 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gTH-ya-xed" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="8" width="104" height="104"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="gTH-ya-xed" secondAttribute="height" multiplier="1:1" id="zuW-0p-89O"/>
+                                                            <constraint firstAttribute="width" constant="104" id="SGR-3k-VCJ"/>
+                                                            <constraint firstAttribute="height" constant="104" id="e2K-58-gkW"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4a-O4-uiG">
+                                                        <rect key="frame" x="317" y="8" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="Q1T-cY-Tbs"/>
+                                                            <constraint firstAttribute="width" constant="50" id="mxQ-gI-UIa"/>
+                                                        </constraints>
+                                                        <state key="normal" image="icons8-more"/>
+                                                        <connections>
+                                                            <action selector="optionButtonPressed:" destination="E8D-uL-5if" eventType="touchUpInside" id="yot-3Q-a4b"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@mocha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zS6-gZ-7y2">
                                                         <rect key="frame" x="120" y="49.5" width="68" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4a-O4-uiG">
-                                                        <rect key="frame" x="317" y="8" width="50" height="50"/>
-                                                        <state key="normal" image="icons8-more"/>
-                                                        <connections>
-                                                            <action selector="optionButtonPressed:" destination="E8D-uL-5if" eventType="touchUpInside" id="yot-3Q-a4b"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="gTH-ya-xed" firstAttribute="leading" secondItem="G9V-Ob-Zbb" secondAttribute="leading" constant="8" id="1dW-2v-xEr"/>
-                                                    <constraint firstAttribute="bottom" secondItem="gTH-ya-xed" secondAttribute="bottom" constant="8" id="3Fp-OV-3L0"/>
-                                                    <constraint firstAttribute="trailing" secondItem="L4a-O4-uiG" secondAttribute="trailing" constant="8" id="YMv-Pb-x4Z"/>
-                                                    <constraint firstItem="L4a-O4-uiG" firstAttribute="top" secondItem="G9V-Ob-Zbb" secondAttribute="top" constant="8" id="jns-Am-cUY"/>
-                                                    <constraint firstItem="zS6-gZ-7y2" firstAttribute="centerY" secondItem="gTH-ya-xed" secondAttribute="centerY" id="kCa-wr-Ull"/>
-                                                    <constraint firstItem="zS6-gZ-7y2" firstAttribute="leading" secondItem="gTH-ya-xed" secondAttribute="trailing" constant="8" id="kut-Ns-ggN"/>
-                                                    <constraint firstItem="gTH-ya-xed" firstAttribute="top" secondItem="G9V-Ob-Zbb" secondAttribute="top" constant="8" id="vx5-qe-wXv"/>
+                                                    <constraint firstItem="gTH-ya-xed" firstAttribute="leading" secondItem="G9V-Ob-Zbb" secondAttribute="leading" constant="8" id="Q2v-7V-AK9"/>
+                                                    <constraint firstItem="L4a-O4-uiG" firstAttribute="top" secondItem="G9V-Ob-Zbb" secondAttribute="top" constant="8" id="X7G-T8-g2p"/>
+                                                    <constraint firstAttribute="trailing" secondItem="L4a-O4-uiG" secondAttribute="trailing" constant="8" id="fUd-v8-5eT"/>
+                                                    <constraint firstItem="zS6-gZ-7y2" firstAttribute="leading" secondItem="gTH-ya-xed" secondAttribute="trailing" constant="8" id="fqU-Gp-jGN"/>
+                                                    <constraint firstItem="gTH-ya-xed" firstAttribute="top" secondItem="G9V-Ob-Zbb" secondAttribute="top" constant="8" id="uYK-gj-D8Z"/>
+                                                    <constraint firstItem="zS6-gZ-7y2" firstAttribute="centerY" secondItem="gTH-ya-xed" secondAttribute="centerY" id="xNS-eM-Ma6"/>
                                                 </constraints>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZyJ-dg-csR" customClass="CornerImageView" customModule="FellowBloggerV2" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="120" width="375" height="240"/>
+                                                <rect key="frame" x="0.0" y="127" width="375" height="233"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="233" id="KJY-xZ-Umb"/>
+                                                </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMi-Nl-cHb">
-                                                <rect key="frame" x="8" y="368" width="359" height="933.5"/>
-                                                <string key="text">Swift uses Automatic Reference Counting (ARC) to track and manage your app’s memory usage. In most cases, this means that memory management “just works” in Swift, and you do not need to think about memory management yourself. ARC automatically frees up the memory used by class instances when those instances are no longer needed.
-
-However, in a few cases ARC requires more information about the relationships between parts of your code in order to manage memory for you. This chapter describes those situations and shows how you enable ARC to manage all of your app’s memory. Using ARC in Swift is very similar to the approach described in Transitioning to ARC Release Notes for using ARC with Objective-C.
-
-Reference counting applies only to instances of classes. Structures and enumerations are value types, not reference types, and are not stored and passed by reference.Swift uses Automatic Reference Counting (ARC) to track and manage your app’s memory usage. In most cases, this means that memory management “just works” in Swift, and you do not need to think about memory management yourself. ARC automatically frees up the memory used by class instances when those instances are no longer needed.
-
-However, in a few cases ARC requires more information about the relationships between parts of your code in order to manage memory for you. This chapter describes those situations and shows how you enable ARC to manage all of your app’s memory. Using ARC in Swift is very similar to the approach described in Transitioning to ARC Release Notes for using ARC with Objective-C.
-
-Reference counting applies only to instances of classes. Structures and enumerations are value types, not reference types, and are not stored and passed by reference.</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="blog description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMi-Nl-cHb">
+                                                <rect key="frame" x="8" y="368" width="359" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -321,16 +320,16 @@ Reference counting applies only to instances of classes. Structures and enumerat
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="G9V-Ob-Zbb" firstAttribute="top" secondItem="P6n-0d-JN3" secondAttribute="top" id="33u-w7-x4P"/>
-                                            <constraint firstItem="gMi-Nl-cHb" firstAttribute="top" secondItem="ZyJ-dg-csR" secondAttribute="bottom" constant="8" id="Bb0-Xy-sdf"/>
-                                            <constraint firstItem="gMi-Nl-cHb" firstAttribute="leading" secondItem="P6n-0d-JN3" secondAttribute="leading" constant="8" id="F9N-RG-DAI"/>
-                                            <constraint firstAttribute="trailing" secondItem="gMi-Nl-cHb" secondAttribute="trailing" constant="8" id="Fx5-W7-gtZ"/>
-                                            <constraint firstItem="ZyJ-dg-csR" firstAttribute="height" secondItem="G9V-Ob-Zbb" secondAttribute="height" multiplier="2" id="Khh-Jj-lWJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZyJ-dg-csR" secondAttribute="trailing" id="PdS-Dw-rMO"/>
                                             <constraint firstItem="G9V-Ob-Zbb" firstAttribute="height" secondItem="P6n-0d-JN3" secondAttribute="height" multiplier="0.18" id="S2b-4z-0R3"/>
+                                            <constraint firstItem="ZyJ-dg-csR" firstAttribute="top" secondItem="gTH-ya-xed" secondAttribute="bottom" constant="15" id="W4f-td-S1f"/>
                                             <constraint firstItem="G9V-Ob-Zbb" firstAttribute="leading" secondItem="P6n-0d-JN3" secondAttribute="leading" id="a0M-zl-mbX"/>
-                                            <constraint firstItem="ZyJ-dg-csR" firstAttribute="leading" secondItem="P6n-0d-JN3" secondAttribute="leading" id="aHu-oo-bIa"/>
-                                            <constraint firstItem="ZyJ-dg-csR" firstAttribute="top" secondItem="G9V-Ob-Zbb" secondAttribute="bottom" id="fz0-Jl-i4w"/>
+                                            <constraint firstAttribute="trailing" secondItem="gMi-Nl-cHb" secondAttribute="trailing" constant="8" id="a3G-wu-gb6"/>
                                             <constraint firstAttribute="trailing" secondItem="G9V-Ob-Zbb" secondAttribute="trailing" id="hdi-2T-qhf"/>
+                                            <constraint firstItem="gMi-Nl-cHb" firstAttribute="leading" secondItem="P6n-0d-JN3" secondAttribute="leading" constant="8" id="pwe-aF-maF"/>
+                                            <constraint firstItem="ZyJ-dg-csR" firstAttribute="leading" secondItem="P6n-0d-JN3" secondAttribute="leading" id="reF-Yw-2wY"/>
+                                            <constraint firstAttribute="bottom" secondItem="gMi-Nl-cHb" secondAttribute="bottom" constant="278.5" id="tQu-9V-oyq"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZyJ-dg-csR" secondAttribute="trailing" id="vEe-CQ-yjh"/>
+                                            <constraint firstItem="gMi-Nl-cHb" firstAttribute="top" secondItem="ZyJ-dg-csR" secondAttribute="bottom" constant="8" id="x3y-sg-8m5"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -348,7 +347,6 @@ Reference counting applies only to instances of classes. Structures and enumerat
                             <constraint firstItem="lfX-Vr-3kE" firstAttribute="trailing" secondItem="FCi-xq-Tgp" secondAttribute="trailing" id="GYW-lY-HOw"/>
                             <constraint firstItem="FCi-xq-Tgp" firstAttribute="leading" secondItem="lfX-Vr-3kE" secondAttribute="leading" id="bqm-X2-KhY"/>
                             <constraint firstItem="P6n-0d-JN3" firstAttribute="height" secondItem="bsC-KD-DV2" secondAttribute="height" priority="750" id="lhf-gM-sN0"/>
-                            <constraint firstItem="gMi-Nl-cHb" firstAttribute="bottom" secondItem="lfX-Vr-3kE" secondAttribute="bottom" priority="251" constant="747.5" id="pgI-d9-Wba"/>
                             <constraint firstItem="lfX-Vr-3kE" firstAttribute="bottom" secondItem="FCi-xq-Tgp" secondAttribute="bottom" id="sxn-Pg-zvH"/>
                             <constraint firstItem="FCi-xq-Tgp" firstAttribute="top" secondItem="lfX-Vr-3kE" secondAttribute="top" id="yEk-el-GUv"/>
                         </constraints>
@@ -533,6 +531,6 @@ Reference counting applies only to instances of classes. Structures and enumerat
         <image name="placeholder" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6MX-vl-tc4"/>
+        <segue reference="wtO-DG-pC4"/>
     </inferredMetricsTieBreakers>
 </document>

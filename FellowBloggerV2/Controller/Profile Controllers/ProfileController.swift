@@ -145,9 +145,10 @@ extension ProfileController: UITableViewDataSource, UITableViewDelegate {
 extension ProfileController: ProfileHeaderViewDelegate {
     func willSignOut(profileHeaderView: ProfileHeaderView) {
         authservice.signOutAccount()
+        showLoginView()
     }
     
     func willEditProfile(profileHeaderView: ProfileHeaderView) {
-//            performSegue(withIdentifier: "Show Edit Profile", sender: nil)
+        performSegue(withIdentifier: "Show Edit Profile", sender: nil)
     }
 }
