@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileHeaderView" customModule="FellowBloggerV2" customModuleProvider="target">
+            <connections>
+                <outlet property="bioLabel" destination="gwh-Uy-prf" id="0We-SF-Jix"/>
+                <outlet property="contentView" destination="Flw-9d-l5K" id="rgT-8h-7bK"/>
+                <outlet property="displayNameLabel" destination="O4i-14-3eg" id="2O9-0R-Uys"/>
+                <outlet property="editProfileButton" destination="XK1-dT-cJU" id="Vyv-Gn-RKR"/>
+                <outlet property="nameLabel" destination="O4i-14-3eg" id="QM3-c0-x0W"/>
+                <outlet property="profieImageView" destination="DNC-un-AbH" id="eXR-yQ-vxy"/>
+                <outlet property="signoutButton" destination="pYz-28-gWM" id="XYy-f5-hb1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Flw-9d-l5K">
+            <rect key="frame" x="0.0" y="0.0" width="421" height="351"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYz-28-gWM" customClass="RoundedButton" customModule="FellowBloggerV2" customModuleProvider="target">
+                    <rect key="frame" x="311" y="170" width="90" height="45"/>
+                    <color key="backgroundColor" red="0.90303797370000005" green="1" blue="0.994254741" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="EDE-bZ-Nnn"/>
+                        <constraint firstAttribute="height" constant="45" id="Vzu-Br-uu4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Sign Out"/>
+                    <connections>
+                        <action selector="signOutButtonPressed:" destination="-1" eventType="touchUpInside" id="EFJ-MS-nBF"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XK1-dT-cJU">
+                    <rect key="frame" x="227.5" y="170" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="FQ5-f8-x82"/>
+                        <constraint firstAttribute="width" constant="50" id="r4S-h6-fsU"/>
+                    </constraints>
+                    <state key="normal" image="icons8-edit"/>
+                    <connections>
+                        <action selector="editButtonPressed:" destination="-1" eventType="touchUpInside" id="60K-yS-jMl"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75R-tB-X5f">
+                    <rect key="frame" x="20" y="241" width="78.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4i-14-3eg">
+                    <rect key="frame" x="20" y="210" width="45" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fcV-iT-9GY">
+                    <rect key="frame" x="0.0" y="0.0" width="421" height="150"/>
+                    <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="QTG-KJ-grW"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="DNC-un-AbH" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                    <rect key="frame" x="20" y="100" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="69m-Mb-W7P"/>
+                        <constraint firstAttribute="width" constant="100" id="8vZ-aS-Ci7"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwh-Uy-prf">
+                    <rect key="frame" x="20" y="282" width="381" height="49"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fcV-iT-9GY" firstAttribute="trailing" secondItem="TRK-gx-Ctx" secondAttribute="trailing" id="2WF-cR-tye"/>
+                <constraint firstItem="pYz-28-gWM" firstAttribute="top" secondItem="fcV-iT-9GY" secondAttribute="bottom" constant="20" id="54O-jy-vyR"/>
+                <constraint firstItem="TRK-gx-Ctx" firstAttribute="trailing" secondItem="gwh-Uy-prf" secondAttribute="trailing" constant="20" id="9S7-zq-bDa"/>
+                <constraint firstItem="TRK-gx-Ctx" firstAttribute="bottom" secondItem="gwh-Uy-prf" secondAttribute="bottom" constant="20" id="B2q-Li-KRx"/>
+                <constraint firstItem="fcV-iT-9GY" firstAttribute="top" secondItem="TRK-gx-Ctx" secondAttribute="top" id="BXR-3z-9F1"/>
+                <constraint firstItem="XK1-dT-cJU" firstAttribute="top" secondItem="fcV-iT-9GY" secondAttribute="bottom" constant="20" id="KuP-l1-pbM"/>
+                <constraint firstItem="gwh-Uy-prf" firstAttribute="top" secondItem="75R-tB-X5f" secondAttribute="bottom" constant="20" id="MdS-qt-N1q"/>
+                <constraint firstItem="O4i-14-3eg" firstAttribute="leading" secondItem="TRK-gx-Ctx" secondAttribute="leading" constant="20" id="QUm-Hj-l8w"/>
+                <constraint firstItem="gwh-Uy-prf" firstAttribute="leading" secondItem="TRK-gx-Ctx" secondAttribute="leading" constant="20" id="RoY-GY-Oom"/>
+                <constraint firstItem="75R-tB-X5f" firstAttribute="leading" secondItem="TRK-gx-Ctx" secondAttribute="leading" constant="20" id="TJM-Uy-UPf"/>
+                <constraint firstItem="XK1-dT-cJU" firstAttribute="centerX" secondItem="fcV-iT-9GY" secondAttribute="centerX" multiplier="1.2" id="XET-sd-s1R"/>
+                <constraint firstItem="DNC-un-AbH" firstAttribute="leading" secondItem="TRK-gx-Ctx" secondAttribute="leading" constant="20" id="e6n-EO-zdT"/>
+                <constraint firstItem="fcV-iT-9GY" firstAttribute="leading" secondItem="TRK-gx-Ctx" secondAttribute="leading" id="kl5-7l-iCM"/>
+                <constraint firstItem="DNC-un-AbH" firstAttribute="centerY" secondItem="fcV-iT-9GY" secondAttribute="centerY" multiplier="2" id="n1R-5u-eVG"/>
+                <constraint firstItem="O4i-14-3eg" firstAttribute="top" secondItem="DNC-un-AbH" secondAttribute="bottom" constant="10" id="vNQ-xP-Wca"/>
+                <constraint firstItem="TRK-gx-Ctx" firstAttribute="trailing" secondItem="pYz-28-gWM" secondAttribute="trailing" constant="20" id="vwo-De-bed"/>
+                <constraint firstItem="75R-tB-X5f" firstAttribute="top" secondItem="O4i-14-3eg" secondAttribute="bottom" constant="10" id="xkU-e7-qlO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="TRK-gx-Ctx"/>
+            <point key="canvasLocation" x="-1194.4000000000001" y="-320.68965517241384"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icons8-edit" width="50" height="50"/>
+        <image name="placeholder" width="512" height="512"/>
+    </resources>
+</document>

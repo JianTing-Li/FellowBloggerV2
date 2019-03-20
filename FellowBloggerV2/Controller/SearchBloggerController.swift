@@ -1,20 +1,18 @@
 //
-//  ViewController.swift
+//  SearchBloggerController.swift
 //  FellowBloggerV2
 //
-//  Created by Jian Ting Li on 3/13/19.
+//  Created by Jian Ting Li on 3/14/19.
 //  Copyright © 2019 Jian Ting Li. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class SearchBloggerController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
 
-
 }
-
