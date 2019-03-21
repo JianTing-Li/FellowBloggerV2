@@ -11,4 +11,21 @@ import UIKit
 class ProfileEditCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var contentTextField: UITextField!
+    
+    public func configureCell(profileComponent: ProfileComponent, profileComponents: [ProfileComponent : String] , tag: Int) {
+        contentTextField.tag = tag
+        switch profileComponent {
+        case .firstName:
+            contentLabel.text = "First Name"
+            contentTextField.text = profileComponents[.firstName]
+        case .lastName:
+            contentLabel.text = "Last Name"
+            contentTextField.text = profileComponents[.lastName]
+        case .userName:
+            contentLabel.text = "Username"
+            contentTextField.text = profileComponents[.userName]
+        case .bio:
+            break
+        }
+    }
 }

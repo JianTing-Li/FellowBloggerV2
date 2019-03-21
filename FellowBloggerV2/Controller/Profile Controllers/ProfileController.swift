@@ -19,7 +19,13 @@ class ProfileController: UIViewController {
     
     private var authservice = AppDelegate.authservice
     
-    private var blogger: Blogger?
+    private var blogger: Blogger? {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateProfileUI()
+            }
+        }
+    }
     private var userBlogs = [Blog]() {
         didSet {
             DispatchQueue.main.async {
@@ -32,35 +38,35 @@ class ProfileController: UIViewController {
         super.viewDidLoad()
         profileHeaderView.delegate = self
         configureTableView()
+        fetchCurrentBlogger()
         fetchUserBlogs()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        updateProfileUI()
-    }
-    
-    private func updateProfileUI() {
-        guard let blogger = authservice.getCurrentUser() else {
+    private func fetchCurrentBlogger() {
+        guard let currentUser = authservice.getCurrentUser() else {
             print("No logged user")
             return
         }
-        DBService.getBlogger(userId: blogger.uid) { [weak self] (error, blogger) in
+        DBService.getBlogger(userId: currentUser.uid) { [weak self] (error, blogger) in
             if let error = error {
                 self?.showAlert(title: "Error fet hing account info", message: error.localizedDescription)
             } else if let blogger = blogger {
-                self?.profileHeaderView.bioLabel.text = blogger.bio ?? ""
-                self?.profileHeaderView.nameLabel.text = blogger.fullName
-                self?.profileHeaderView.displayNameLabel.text = "@" + blogger.displayName
-                if let profileImageURL = blogger.photoURL {
-                    self?.profileHeaderView.profieImageView.kf.indicatorType = .activity
-                    self?.profileHeaderView.profieImageView.kf.setImage(with: URL(string: profileImageURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
-                }
-                if let coverPhotoURL = blogger.coverImageURL {
-                    self?.profileHeaderView.coverPhotoImageView.kf.indicatorType = .activity
-                    self?.profileHeaderView.coverPhotoImageView.kf.setImage(with: URL(string: coverPhotoURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
-                }
+                self?.blogger = blogger
             }
+        }
+    }
+    
+    private func updateProfileUI() {
+        profileHeaderView.bioLabel.text = blogger?.bio ?? ""
+        profileHeaderView.nameLabel.text = blogger?.fullName
+        profileHeaderView.displayNameLabel.text = "@" + (blogger?.displayName)!
+        if let profileImageURL = blogger?.photoURL {
+            profileHeaderView.profieImageView.kf.indicatorType = .activity
+            profileHeaderView.profieImageView.kf.setImage(with: URL(string: profileImageURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
+        }
+        if let coverPhotoURL = blogger?.coverImageURL {
+            profileHeaderView.coverPhotoImageView.kf.indicatorType = .activity
+            profileHeaderView.coverPhotoImageView.kf.setImage(with: URL(string: coverPhotoURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
         }
     }
     
@@ -85,6 +91,11 @@ class ProfileController: UIViewController {
         }
     }
     
+    @IBAction func unwindFromEditProfileView(segue: UIStoryboardSegue) {
+        let editProfileVC = segue.source as! EditProfileController
+        blogger = editProfileVC.blogger
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Blog Details" {
             guard let indexPath = sender as? IndexPath,
@@ -94,30 +105,16 @@ class ProfileController: UIViewController {
             let selectedBlog = userBlogs[indexPath.row]
             blogDVC.blog = selectedBlog
         } else if segue.identifier == "Show Edit Profile VC" {
-            
+            guard let navController = segue.destination as? UINavigationController,
+                let editProfileVC = navController.viewControllers.first as? EditProfileController else {
+                    fatalError("failed to segue to editProfileVC")
+            }
+            editProfileVC.blogger = blogger
         }
-//        if segue.identifier == "Show Edit Profile" {
-//            guard let navController = segue.destination as? UINavigationController,
-//                let editProfileVC = navController.viewControllers.first as? EditProfileViewController
-//                else {
-//                    fatalError("editProfileVC not found")
-//            }
-//            editProfileVC.profileImage = profileHeaderView.profileImageView.image
-//            editProfileVC.displayName = profileHeaderView.displayNameLabel.text
-//        } else if segue.identifier == "Show Dish Details" {
-//            guard let indexPath = sender as? IndexPath,
-//                let cell = tableView.cellForRow(at: indexPath) as? DishCell,
-//                let dishDVC = segue.destination as? DishDetailViewController else {
-//                    fatalError("cannot segue to dishDVC")
-//            }
-//            let dish = dishes[indexPath.row]
-//            dishDVC.displayName = cell.displayNameLabel.text
-//            dishDVC.dish = dish
-//        }
+
     }
 
 }
-
 
 extension ProfileController: UITableViewDataSource, UITableViewDelegate {
     private func configureTableView() {

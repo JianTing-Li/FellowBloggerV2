@@ -14,4 +14,5 @@ struct Constants {
     static let ProfileImage = "profileImages"           // "profileImages/\(user.uid)"
     static let ProfileCoverImage = "coverImages"        // "coverImages/\(user.uid)"
     static let BlogCellHeight: CGFloat = 400.0
+    static let userBioTextViewPlaceholder = "Write your bio here..."
 }

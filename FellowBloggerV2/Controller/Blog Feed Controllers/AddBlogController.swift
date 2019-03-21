@@ -64,7 +64,7 @@ class AddBlogController: UIViewController {
                                                         documentId: docRef.documentID)
                                         DBService.postBlog(blog: blog, completion: { (error) in
                                             if let error = error {
-                                                self?.showAlert(title: "Posting Blog Error", message: nil)
+                                                self?.showAlert(title: "Posting Blog Error", message: error.localizedDescription)
                                             } else {
                                                 self?.showAlert(title: "Blog Posted", message: nil)
                                                 self?.dismiss(animated: true, completion: nil)

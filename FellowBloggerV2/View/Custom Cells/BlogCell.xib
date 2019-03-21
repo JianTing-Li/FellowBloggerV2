@@ -19,16 +19,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="wAv-Gh-9dF" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
-                        <rect key="frame" x="20" y="11" width="100" height="100"/>
+                        <rect key="frame" x="20" y="11" width="80" height="80"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="wAv-Gh-9dF" secondAttribute="height" multiplier="1:1" id="wlZ-hv-isp"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="xPx-2B-Yxu" customClass="CornerImageView" customModule="FellowBloggerV2" customModuleProvider="target">
-                        <rect key="frame" x="20" y="151" width="507" height="230"/>
+                        <rect key="frame" x="20" y="131" width="507" height="250"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blog Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gm6-HV-9Vo">
-                        <rect key="frame" x="20" y="119" width="507" height="24"/>
+                        <rect key="frame" x="20" y="99" width="507" height="24"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                     <constraint firstItem="wAv-Gh-9dF" firstAttribute="leading" secondItem="Zsz-n6-KmI" secondAttribute="leadingMargin" id="YJk-Te-uNr"/>
                     <constraint firstItem="xPx-2B-Yxu" firstAttribute="top" secondItem="gm6-HV-9Vo" secondAttribute="bottom" constant="8" id="YLc-N9-cRl"/>
                     <constraint firstItem="gm6-HV-9Vo" firstAttribute="trailing" secondItem="Zsz-n6-KmI" secondAttribute="trailingMargin" id="gF8-wk-Lal"/>
-                    <constraint firstItem="wAv-Gh-9dF" firstAttribute="height" secondItem="Zsz-n6-KmI" secondAttribute="height" multiplier="0.25" id="iSW-tx-uR8"/>
+                    <constraint firstItem="wAv-Gh-9dF" firstAttribute="height" secondItem="Zsz-n6-KmI" secondAttribute="height" multiplier="0.2" id="iSW-tx-uR8"/>
                     <constraint firstAttribute="bottomMargin" secondItem="xPx-2B-Yxu" secondAttribute="bottom" constant="8" id="izc-iG-2kv"/>
                     <constraint firstItem="xPx-2B-Yxu" firstAttribute="trailing" secondItem="Zsz-n6-KmI" secondAttribute="trailingMargin" id="o8a-X9-6zN"/>
                     <constraint firstItem="wAv-Gh-9dF" firstAttribute="top" secondItem="Zsz-n6-KmI" secondAttribute="topMargin" id="sff-Z5-3DS"/>
