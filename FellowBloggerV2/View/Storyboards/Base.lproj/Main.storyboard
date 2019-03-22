@@ -234,7 +234,7 @@
             </objects>
             <point key="canvasLocation" x="3063" y="1648"/>
         </scene>
-        <!--Search Blogger Controller-->
+        <!--Search Blogger-->
         <scene sceneID="4Ko-pM-nLX">
             <objects>
                 <viewController id="sT2-eT-j5K" customClass="SearchBloggerController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
@@ -250,7 +250,7 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jvB-bo-AIo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BloggerCell" id="jvB-bo-AIo">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jvB-bo-AIo" id="WXB-fA-k0k">
@@ -273,7 +273,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O6O-lk-Syu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="p6Q-oC-eqx"/>
+                    <navigationItem key="navigationItem" title="Search Blogger" id="p6Q-oC-eqx"/>
+                    <connections>
+                        <outlet property="bloggerSearchBar" destination="3ME-rV-FaY" id="SCe-c4-hY2"/>
+                        <outlet property="searchBloggerTableView" destination="4DT-yf-h1A" id="MYz-q3-ECz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFv-E5-ppJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

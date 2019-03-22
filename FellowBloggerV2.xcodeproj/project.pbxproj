@@ -36,6 +36,8 @@
 		D607F0CA223C3A1D00D5811A /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D607F0C9223C3A1D00D5811A /* ProfileHeaderView.xib */; };
 		D607F0CC223C4EE600D5811A /* IBDesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0CB223C4EE600D5811A /* IBDesignableViews.swift */; };
 		D607F0CE223F4EA800D5811A /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0CD223F4EA800D5811A /* BlogCell.swift */; };
+		D60AF79422452406003ED469 /* BloggerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D60AF79322452406003ED469 /* BloggerCell.xib */; };
+		D60AF79622452430003ED469 /* BloggerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60AF79522452430003ED469 /* BloggerCell.swift */; };
 		D68D33A82242D42400CD0D4D /* ProfileEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D33A72242D42400CD0D4D /* ProfileEditCell.swift */; };
 		D6AA0851223F5C02001E3770 /* VC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AA0850223F5C02001E3770 /* VC+Navigation.swift */; };
 		D6AA0853223F5CD8001E3770 /* FellowBloggerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */; };
@@ -79,6 +81,8 @@
 		D607F0C9223C3A1D00D5811A /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		D607F0CB223C4EE600D5811A /* IBDesignableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableViews.swift; sourceTree = "<group>"; };
 		D607F0CD223F4EA800D5811A /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
+		D60AF79322452406003ED469 /* BloggerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BloggerCell.xib; sourceTree = "<group>"; };
+		D60AF79522452430003ED469 /* BloggerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloggerCell.swift; sourceTree = "<group>"; };
 		D68D33A72242D42400CD0D4D /* ProfileEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCell.swift; sourceTree = "<group>"; };
 		D6AA0850223F5C02001E3770 /* VC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+Navigation.swift"; sourceTree = "<group>"; };
 		D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FellowBloggerTabBarController.swift; sourceTree = "<group>"; };
@@ -180,11 +184,11 @@
 		D607F09D22399A9300D5811A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */,
+				D607F0A2223AE75F00D5811A /* SearchBloggerController.swift */,
 				D607F0A8223AEAEF00D5811A /* Login Controllers */,
 				D607F0C2223C16CD00D5811A /* Blog Feed Controllers */,
-				D607F0A2223AE75F00D5811A /* SearchBloggerController.swift */,
 				D607F0C1223C169A00D5811A /* Profile Controllers */,
-				D6AA0852223F5CD8001E3770 /* FellowBloggerTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -232,9 +236,11 @@
 		D607F0B4223C099200D5811A /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D68D33A72242D42400CD0D4D /* ProfileEditCell.swift */,
 				D607F0B2223C090600D5811A /* BlogCell.xib */,
 				D607F0CD223F4EA800D5811A /* BlogCell.swift */,
-				D68D33A72242D42400CD0D4D /* ProfileEditCell.swift */,
+				D60AF79322452406003ED469 /* BloggerCell.xib */,
+				D60AF79522452430003ED469 /* BloggerCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -339,6 +345,7 @@
 			files = (
 				D607F0832239863400D5811A /* LaunchScreen.storyboard in Resources */,
 				D607F08B22398DA400D5811A /* GoogleService-Info.plist in Resources */,
+				D60AF79422452406003ED469 /* BloggerCell.xib in Resources */,
 				D607F0CA223C3A1D00D5811A /* ProfileHeaderView.xib in Resources */,
 				D607F07E2239863000D5811A /* Main.storyboard in Resources */,
 				D6C7A74522418D0A00B1B1DD /* Assets.xcassets in Resources */,
@@ -433,6 +440,7 @@
 				D6C7A7432241443000B1B1DD /* Constants.swift in Sources */,
 				D607F0BE223C158700D5811A /* EditProfileController.swift in Sources */,
 				D607F0CC223C4EE600D5811A /* IBDesignableViews.swift in Sources */,
+				D60AF79622452430003ED469 /* BloggerCell.swift in Sources */,
 				D607F0972239951100D5811A /* Blogger.swift in Sources */,
 				D607F0BC223C154000D5811A /* BlogFeedDetailController.swift in Sources */,
 				D607F0902239940400D5811A /* DBService.swift in Sources */,

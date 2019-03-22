@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BloggerCell" rowHeight="200" id="V1L-6G-3D7" customClass="BloggerCell" customModule="FellowBloggerV2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="501" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V1L-6G-3D7" id="mTh-8o-7iH">
+                <rect key="frame" x="0.0" y="0.0" width="501" height="199.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VIo-O4-YFJ" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                        <rect key="frame" x="28" y="19" width="162" height="162"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="VIo-O4-YFJ" secondAttribute="height" multiplier="1:1" id="Brc-fs-maF"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Itm-wc-L67">
+                        <rect key="frame" x="210" y="19" width="78" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWg-cw-5nu">
+                        <rect key="frame" x="210" y="160" width="78" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="VIo-O4-YFJ" firstAttribute="top" secondItem="mTh-8o-7iH" secondAttribute="topMargin" constant="8" id="BsT-Vq-HJ2"/>
+                    <constraint firstItem="JWg-cw-5nu" firstAttribute="leading" secondItem="VIo-O4-YFJ" secondAttribute="trailing" constant="20" id="DA9-QJ-yEI"/>
+                    <constraint firstItem="VIo-O4-YFJ" firstAttribute="leading" secondItem="mTh-8o-7iH" secondAttribute="leadingMargin" constant="8" id="F4e-mX-VHy"/>
+                    <constraint firstItem="Itm-wc-L67" firstAttribute="leading" secondItem="VIo-O4-YFJ" secondAttribute="trailing" constant="20" id="J7U-1w-SUx"/>
+                    <constraint firstItem="JWg-cw-5nu" firstAttribute="bottom" secondItem="VIo-O4-YFJ" secondAttribute="bottom" id="OZz-Zm-1y9"/>
+                    <constraint firstItem="Itm-wc-L67" firstAttribute="top" secondItem="VIo-O4-YFJ" secondAttribute="top" id="kxa-cB-Yvq"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="VIo-O4-YFJ" secondAttribute="bottom" constant="8" id="r8x-Ke-94C"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="profileImageView" destination="VIo-O4-YFJ" id="2kz-MI-8qQ"/>
+                <outlet property="userFullNameLabel" destination="Itm-wc-L67" id="1sG-IK-6c3"/>
+                <outlet property="usernameLabel" destination="JWg-cw-5nu" id="sX7-Ba-JXT"/>
+            </connections>
+            <point key="canvasLocation" x="-21.600000000000001" y="179.01049475262371"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder" width="512" height="512"/>
+    </resources>
+</document>
