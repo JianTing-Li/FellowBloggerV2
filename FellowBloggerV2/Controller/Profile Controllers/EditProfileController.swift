@@ -7,18 +7,32 @@
 //
 
 import UIKit
+import Toucan
 
-enum ProfileComponent: CaseIterable {
-    case firstName
-    case lastName
-    case userName
+enum ProfileComponent: String, CaseIterable {
+    case firstName = "FirstName"
+    case lastName = "LastName"
+    case userName = "Username"
     case bio
+}
+
+private enum ImageEditingState {
+    case profileImageEditing
+    case coverImageEditing
+}
+
+private enum ImageState {
+    case profileImage
+    case coverImage
 }
 
 class EditProfileController: UIViewController {
     
     @IBOutlet weak var editProfileTableView: UITableView!
+    @IBOutlet weak var profileImageButton: CircularButton!
+    @IBOutlet weak var profileCoverImageButton: RoundedButton!
     
+    private var authservice = AppDelegate.authservice
     public var blogger: Blogger! // only use for initial setup
     
     // profileComponents & profileComponentsArray are used through the profile update
@@ -27,31 +41,36 @@ class EditProfileController: UIViewController {
         .lastName : "",
         .userName : "",
         .bio : ""
-    ] {
-        didSet {
-            DispatchQueue.main.async {
-                self.editProfileTableView.reloadData()
-            }
-        }
-    }
+    ]
+
     private var profileComponentsArray: [ProfileComponent] = [.firstName,
                                                               .lastName,
                                                               .userName,
                                                               .bio ]
     
-//    private var selectedImage: UIImage?
-//    private lazy var imagePickerController: UIImagePickerController = {
-//        let ip = UIImagePickerController()
-//        ip.delegate = self
-//        return ip
-//    }()
+    private var selectedProfileImage: UIImage?
+    private var selectedCoverImage: UIImage?
+    
+    private var imageEditingState: ImageEditingState?
+    
+    private lazy var imagePickerController: UIImagePickerController = {
+        let ip = UIImagePickerController()
+        ip.delegate = self
+        return ip
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setProfileComponents()
         editProfileTableView.dataSource = self
-        //setup uipickerview
+        profileImageButton.kf.setImage(with: URL(string: blogger.photoURL ?? ""), for: .normal, placeholder: #imageLiteral(resourceName: "placeholder.png"))
+        profileCoverImageButton.kf.setImage(with: URL(string: blogger.coverImageURL ?? ""), for: .normal, placeholder: #imageLiteral(resourceName: "placeholder.png"))
+        setProfileComponents()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        editProfileTableView.reloadData()
+    }
+    
     
     private func setProfileComponents() {
         profileComponents[.firstName] = blogger.firstName
@@ -62,62 +81,85 @@ class EditProfileController: UIViewController {
     
     
     @IBAction func changeProfileImgButtonPressed(_ sender: CircularButton) {
-//        var actionTitles = [String]()
-//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-//            actionTitles = ["Photo Library", "Camera"]
-//        } else {
-//            actionTitles = ["Photo Library"]
-//        }
-//        showActionSheet(title: nil, message: nil, actionTitles: actionTitles, handlers: [{ [unowned self] photoLibraryAction in
-//            self.imagePickerController.sourceType = .photoLibrary
-//            self.present(self.imagePickerController, animated: true)
-//            }, { cameraAction in
-//                self.imagePickerController.sourceType = .camera
-//                self.present(self.imagePickerController, animated: true)
-//            }
-//            ])
+        imageEditingState = .profileImageEditing
+        setupAndPresentPickerController()
     }
     
     @IBAction func changeCoverImgButtonPressed(_ sender: RoundedButton) {
-        
+        imageEditingState = .coverImageEditing
+        setupAndPresentPickerController()
+    }
+    
+    // TODO: Study this function of code later
+    private func setupAndPresentPickerController() {
+        var actionTitles = [String]()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionTitles = ["Photo Library", "Camera"]
+        } else {
+            actionTitles = ["Photo Library"]
+        }
+        showActionSheet(title: nil, message: nil, actionTitles: actionTitles, handlers: [{ [unowned self] photoLibraryAction in
+            self.imagePickerController.sourceType = .photoLibrary
+            self.present(self.imagePickerController, animated: true)
+            }, { cameraAction in
+                self.imagePickerController.sourceType = .camera
+                self.present(self.imagePickerController, animated: true)
+            }
+            ])
     }
     
     @IBAction func updateProfileButtonPressed(_ sender: UIBarButtonItem) {
-//        navigationItem.rightBarButtonItem?.isEnabled = false
-//        guard let imageData = selectedImage?.jpegData(compressionQuality: 1.0),
-//            let user = authservice.getCurrentUser(),
-//            let displayName = displayNameTextField.text,
-//            !displayName.isEmpty else {
-//                showAlert(title: "Missing Fields", message: "A photo and username are Required")
-//                return
-//        }
-//        StorageService.postImage(imageData: imageData, imageName: Constants.ProfileImagePath + user.uid) { [weak self] (error, imageURL) in
-//            if let error = error {
-//                self?.showAlert(title: "Error Saving Photo", message: error.localizedDescription)
-//            } else if let imageURL = imageURL {
-//                // update auth user and user db document
-//                let request = user.createProfileChangeRequest()
-//                request.displayName = displayName
-//                request.photoURL = imageURL
-//                request.commitChanges(completion: { (error) in
-//                    if let error = error {
-//                        self?.showAlert(title: "Error Saving Account Info", message: error.localizedDescription)
-//                    }
-//                })
-//                DBService.firestoreDB
-//                    .collection(NDUsersCollectionKeys.CollectionKey)
-//                    .document(user.uid)
-//                    .updateData([NDUsersCollectionKeys.PhotoURLKey    : imageURL.absoluteString,
-//                                 NDUsersCollectionKeys.DisplayNameKey : displayName
-//                        ], completion: { (error) in
-//                            if let error = error {
-//                                self?.showAlert(title: "Error Saving Account Info", message: error.localizedDescription)
-//                            }
-//                    })
-//                self?.dismiss(animated: true)
-//                self?.navigationItem.rightBarButtonItem?.isEnabled = true
-//            }
-//        }
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        guard let user = authservice.getCurrentUser(), !(profileComponents[.userName]?.isEmpty)! else {
+            showAlert(title: "Missing Fields", message: "Username is Required")
+            return
+        }
+        
+        var imageURLs = [ImageState : String]()
+        var imageCalls = 0 {
+            didSet {
+                if imageCalls == 2 {
+                    DBService.firestoreDB
+                        .collection(BloggersCollectionKeys.CollectionKey)
+                        .document(user.uid)
+                        .updateData([BloggersCollectionKeys.PhotoURLKey : imageURLs[.profileImage] ?? "",
+                                     BloggersCollectionKeys.CoverImageURLKey : imageURLs[.coverImage] ?? "",
+                                     BloggersCollectionKeys.FirstNameKey : profileComponents[.firstName] ?? ProfileComponent.firstName.rawValue,
+                                     BloggersCollectionKeys.LastNameKey : profileComponents[.lastName] ?? ProfileComponent.lastName.rawValue,
+                                     BloggersCollectionKeys.DisplayNameKey : profileComponents[.userName]!,
+                                     BloggersCollectionKeys.BioKey : profileComponents[.bio] ?? ""
+                        ]) { [weak self] (error) in
+                            if let error = error {
+                                self?.showAlert(title: "Error Saving Account Info", message: error.localizedDescription)
+                            }
+                            self?.dismiss(animated: true, completion: nil)
+                            self?.navigationItem.rightBarButtonItem?.isEnabled = true
+                    }
+                }
+            }
+        }
+       
+    
+        if let profileImageData = selectedProfileImage?.jpegData(compressionQuality: 1.0) {
+            StorageService.postImage(imageData: profileImageData, imageName: Constants.ProfileImagePath + user.uid) { [weak self] (error, profileImageURL) in
+                if let error = error {
+                    self?.showAlert(title: "Error Saving Profile Photo", message: error.localizedDescription)
+                } else if let profileImageURL = profileImageURL {
+                    imageURLs[.profileImage] = profileImageURL.absoluteString
+                }
+                imageCalls += 1
+            }
+        } else { imageCalls += 1 }
+        if let profileCoverImageData = selectedCoverImage?.jpegData(compressionQuality: 1.0) {
+            StorageService.postImage(imageData: profileCoverImageData, imageName: Constants.ProfileCoverImagePath + user.uid) { [weak self] (error, profileCoverImageURL) in
+                if let error = error {
+                    self?.showAlert(title: "Error Saving Profile Photo", message: error.localizedDescription)
+                } else if let profileCoverImageURL = profileCoverImageURL {
+                    imageURLs[.coverImage] = profileCoverImageURL.absoluteString
+                }
+                imageCalls += 1
+            }
+        } else { imageCalls += 1 }
     }
     
     @IBAction func DismissButtonPressed(_ sender: UIBarButtonItem) {
@@ -167,23 +209,48 @@ extension EditProfileController: UITableViewDataSource {
 
 extension EditProfileController: UITextFieldDelegate {
     // TODO: dismiss keyboard and update the profileComponents
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        switch textField.tag {
+        case 0:  // first name
+            profileComponents[.firstName] = text + string
+            print(profileComponents[.firstName] ?? "nil")
+        case 1:  // last name
+            profileComponents[.lastName] = text + string
+            print(profileComponents[.lastName] ?? "nil")
+        case 2:  // username
+            profileComponents[.userName] = text + string
+            print(profileComponents[.userName] ?? "nil")
+        default:
+            break
+        }
+        return true
+    }
 }
 
-//extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        dismiss(animated: true)
-//    }
-//
-//    func imagePickerController(_ picker: UIImagePickerController,
-//                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-//            print("original image not available")
-//            return
-//        }
-//        let size = CGSize(width: 500, height: 500)
-//        let resizedImage = Toucan.Resize.resizeImage(originalImage, size: size)
-//        selectedImage = resizedImage
-//        profileImageViewButton.setImage(resizedImage, for: .normal)
-//        dismiss(animated: true)
-//    }
-//}
+extension EditProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            print("original image not available")
+            return
+        }
+        let size = CGSize(width: 500, height: 500)
+        let resizedImage = Toucan.Resize.resizeImage(originalImage, size: size)
+        switch imageEditingState {
+        case .profileImageEditing?:
+            selectedProfileImage = resizedImage
+            profileImageButton.setImage(resizedImage, for: .normal)
+        case .coverImageEditing?:
+            selectedCoverImage = resizedImage
+            profileCoverImageButton.setImage(resizedImage, for: .normal)
+        default:
+            break
+        }
+        dismiss(animated: true)
+    }
+}

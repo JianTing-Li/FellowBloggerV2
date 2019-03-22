@@ -19,14 +19,21 @@ class ProfileController: UIViewController {
     
     private var authservice = AppDelegate.authservice
     
-    private var blogger: Blogger? {
+    private var user: Blogger? {
         didSet {
             DispatchQueue.main.async {
                 self.updateProfileUI()
             }
         }
     }
-    private var userBlogs = [Blog]() {
+    public var otherBlogger: Blogger? {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateProfileUI()
+            }
+        }
+    }
+    private var Blogs = [Blog]() {
         didSet {
             DispatchQueue.main.async {
                 self.profileBlogTableView.reloadData()
@@ -38,6 +45,10 @@ class ProfileController: UIViewController {
         super.viewDidLoad()
         profileHeaderView.delegate = self
         configureTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         fetchCurrentBlogger()
         fetchUserBlogs()
     }
@@ -51,20 +62,20 @@ class ProfileController: UIViewController {
             if let error = error {
                 self?.showAlert(title: "Error fet hing account info", message: error.localizedDescription)
             } else if let blogger = blogger {
-                self?.blogger = blogger
+                self?.user = blogger
             }
         }
     }
     
     private func updateProfileUI() {
-        profileHeaderView.bioLabel.text = blogger?.bio ?? ""
-        profileHeaderView.nameLabel.text = blogger?.fullName
-        profileHeaderView.displayNameLabel.text = "@" + (blogger?.displayName)!
-        if let profileImageURL = blogger?.photoURL {
+        profileHeaderView.bioLabel.text = user?.bio ?? ""
+        profileHeaderView.nameLabel.text = user?.fullName
+        profileHeaderView.displayNameLabel.text = "@" + (user?.displayName)!
+        if let profileImageURL = user?.photoURL {
             profileHeaderView.profieImageView.kf.indicatorType = .activity
             profileHeaderView.profieImageView.kf.setImage(with: URL(string: profileImageURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
         }
-        if let coverPhotoURL = blogger?.coverImageURL {
+        if let coverPhotoURL = user?.coverImageURL {
             profileHeaderView.coverPhotoImageView.kf.indicatorType = .activity
             profileHeaderView.coverPhotoImageView.kf.setImage(with: URL(string: coverPhotoURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
         }
@@ -85,15 +96,10 @@ class ProfileController: UIViewController {
                 if let error = error {
                     self?.showAlert(title: "Error fetching blogs", message: error.localizedDescription)
                 } else if let snapshot = snapshot {
-                    self?.userBlogs = snapshot.documents.map { Blog(dict: $0.data()) }
+                    self?.Blogs = snapshot.documents.map { Blog(dict: $0.data()) }
                         .sorted { $0.createdDate.date() > $1.createdDate.date() }
                 }
         }
-    }
-    
-    @IBAction func unwindFromEditProfileView(segue: UIStoryboardSegue) {
-        let editProfileVC = segue.source as! EditProfileController
-        blogger = editProfileVC.blogger
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,14 +108,14 @@ class ProfileController: UIViewController {
                 let blogDVC = segue.destination as? BlogFeedDetailController else {
                     fatalError("Cannot Segue to BlogDVC")
             }
-            let selectedBlog = userBlogs[indexPath.row]
+            let selectedBlog = Blogs[indexPath.row]
             blogDVC.blog = selectedBlog
         } else if segue.identifier == "Show Edit Profile VC" {
             guard let navController = segue.destination as? UINavigationController,
                 let editProfileVC = navController.viewControllers.first as? EditProfileController else {
                     fatalError("failed to segue to editProfileVC")
             }
-            editProfileVC.blogger = blogger
+            editProfileVC.blogger = user
         }
 
     }
@@ -125,14 +131,14 @@ extension ProfileController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userBlogs.count
+        return Blogs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = profileBlogTableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as? BlogCell else {
             fatalError("BlogCell not found")
         }
-        let selectedBlog = userBlogs[indexPath.row]
+        let selectedBlog = Blogs[indexPath.row]
         cell.configureCell(blog: selectedBlog)
         return cell
     }
