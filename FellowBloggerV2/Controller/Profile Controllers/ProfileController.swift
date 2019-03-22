@@ -13,7 +13,7 @@ class ProfileController: UIViewController {
     @IBOutlet weak var profileBlogTableView: UITableView!
     
     private lazy var profileHeaderView: ProfileHeaderView = {
-        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         return headerView
     }()
     
@@ -55,11 +55,11 @@ class ProfileController: UIViewController {
             profileHeaderView.editProfileButton.isHidden = true
             profileHeaderView.signoutButton.isHidden = true
         } else {
-            fetchCurrentBlogger()
+            fetchCurrentUser()
         }
     }
     
-    private func fetchCurrentBlogger() {
+    private func fetchCurrentUser() {
         guard let currentUser = authservice.getCurrentUser() else {
             print("No logged user")
             return
@@ -87,12 +87,8 @@ class ProfileController: UIViewController {
         }
     }
     
-    // fetch only user's dishes (Query: search  / filter)
+    // fetch a specific user's blogs (Query: search  / filter)
     private func fetchUserBlogs(user: Blogger) {
-//        guard let user = authservice.getCurrentUser() else {
-//            print("no logged user")
-//            return
-//        }
         // https://firebase.google.com/docs/firestore/query-data/queries?authuser=1
         // add a "Listener" when we want the cloud data to be automatically updated to any changes (add, delete, edit) & update our data locally (app)
         let _ = DBService.firestoreDB
@@ -121,11 +117,12 @@ class ProfileController: UIViewController {
                 let editProfileVC = navController.viewControllers.first as? EditProfileController else {
                     fatalError("failed to segue to editProfileVC")
             }
-            editProfileVC.blogger = user
+            // TODO: set UIImages here (is this the best practice)
+            editProfileVC.selectedCoverImage = profileHeaderView.coverPhotoImageView.image
+            editProfileVC.selectedProfileImage = profileHeaderView.profieImageView.image
+            editProfileVC.currentUser = user
         }
-
     }
-
 }
 
 extension ProfileController: UITableViewDataSource, UITableViewDelegate {

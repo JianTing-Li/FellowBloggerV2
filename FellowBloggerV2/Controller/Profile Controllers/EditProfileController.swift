@@ -33,7 +33,7 @@ class EditProfileController: UIViewController {
     @IBOutlet weak var profileCoverImageButton: RoundedButton!
     
     private var authservice = AppDelegate.authservice
-    public var blogger: Blogger! // only use for initial setup
+    public var currentUser: Blogger! // only use for initial setup
     
     // profileComponents & profileComponentsArray are used through the profile update
     private var profileComponents: [ProfileComponent: String] = [
@@ -47,9 +47,8 @@ class EditProfileController: UIViewController {
                                                               .lastName,
                                                               .userName,
                                                               .bio ]
-    
-    private var selectedProfileImage: UIImage?
-    private var selectedCoverImage: UIImage?
+    public var selectedProfileImage: UIImage?
+    public var selectedCoverImage: UIImage?
     
     private var imageEditingState: ImageEditingState?
     
@@ -62,8 +61,8 @@ class EditProfileController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         editProfileTableView.dataSource = self
-        profileImageButton.kf.setImage(with: URL(string: blogger.photoURL ?? ""), for: .normal, placeholder: #imageLiteral(resourceName: "placeholder.png"))
-        profileCoverImageButton.kf.setImage(with: URL(string: blogger.coverImageURL ?? ""), for: .normal, placeholder: #imageLiteral(resourceName: "placeholder.png"))
+        profileImageButton.kf.setImage(with: URL(string: currentUser.photoURL ?? ""), for: .normal, placeholder: #imageLiteral(resourceName: "placeholder.png"))
+        profileCoverImageButton.kf.setImage(with: URL(string: currentUser.coverImageURL ?? ""), for: .normal, placeholder: #imageLiteral(resourceName: "placeholder.png"))
         setProfileComponents()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -73,10 +72,10 @@ class EditProfileController: UIViewController {
     
     
     private func setProfileComponents() {
-        profileComponents[.firstName] = blogger.firstName
-        profileComponents[.lastName] = blogger.lastName
-        profileComponents[.userName] = blogger.displayName
-        profileComponents[.bio] = blogger.bio
+        profileComponents[.firstName] = currentUser.firstName
+        profileComponents[.lastName] = currentUser.lastName
+        profileComponents[.userName] = currentUser.displayName
+        profileComponents[.bio] = currentUser.bio
     }
     
     
@@ -110,7 +109,7 @@ class EditProfileController: UIViewController {
     
     @IBAction func updateProfileButtonPressed(_ sender: UIBarButtonItem) {
         navigationItem.rightBarButtonItem?.isEnabled = false
-        guard let user = authservice.getCurrentUser(), !(profileComponents[.userName]?.isEmpty)! else {
+        guard let _ = authservice.getCurrentUser(), !(profileComponents[.userName]?.isEmpty)! else {
             showAlert(title: "Missing Fields", message: "Username is Required")
             return
         }
@@ -121,7 +120,7 @@ class EditProfileController: UIViewController {
                 if imageCalls == 2 {
                     DBService.firestoreDB
                         .collection(BloggersCollectionKeys.CollectionKey)
-                        .document(user.uid)
+                        .document(currentUser.bloggerId)
                         .updateData([BloggersCollectionKeys.PhotoURLKey : imageURLs[.profileImage] ?? "",
                                      BloggersCollectionKeys.CoverImageURLKey : imageURLs[.coverImage] ?? "",
                                      BloggersCollectionKeys.FirstNameKey : profileComponents[.firstName] ?? ProfileComponent.firstName.rawValue,
@@ -139,27 +138,35 @@ class EditProfileController: UIViewController {
             }
         }
        
+        storeImageToFirebase(image: selectedProfileImage, path: Constants.ProfileImagePath, user: currentUser) { [weak self] (error, profileImageURL) in
+            if let error = error {
+                self?.showAlert(title: "Error Saving Cover Photo", message: error.localizedDescription)
+            } else if let profileImageURL = profileImageURL {
+                imageURLs[.profileImage] = profileImageURL.absoluteString
+            }
+            imageCalls += 1
+        }
+        
+        storeImageToFirebase(image: selectedCoverImage, path: Constants.ProfileCoverImagePath, user: currentUser) { [weak self] (error, coverImageURL) in
+            if let error = error {
+                self?.showAlert(title: "Error Saving Cover Photo", message: error.localizedDescription)
+            } else if let coverImageURL = coverImageURL {
+                imageURLs[.coverImage] = coverImageURL.absoluteString
+            }
+            imageCalls += 1
+        }
+    }
     
-        if let profileImageData = selectedProfileImage?.jpegData(compressionQuality: 1.0) {
-            StorageService.postImage(imageData: profileImageData, imageName: Constants.ProfileImagePath + user.uid) { [weak self] (error, profileImageURL) in
+    private func storeImageToFirebase(image: UIImage?, path: String, user: Blogger, completionHandler: @escaping (Error?, URL?) -> Void) {
+        if let imageData = image?.jpegData(compressionQuality: 1.0) {
+            StorageService.postImage(imageData: imageData, imageName: path + user.bloggerId) { (error, imageURL) in
                 if let error = error {
-                    self?.showAlert(title: "Error Saving Profile Photo", message: error.localizedDescription)
-                } else if let profileImageURL = profileImageURL {
-                    imageURLs[.profileImage] = profileImageURL.absoluteString
+                    completionHandler(error, nil)
+                } else if let imageURL = imageURL {
+                    completionHandler(nil, imageURL)
                 }
-                imageCalls += 1
             }
-        } else { imageCalls += 1 }
-        if let profileCoverImageData = selectedCoverImage?.jpegData(compressionQuality: 1.0) {
-            StorageService.postImage(imageData: profileCoverImageData, imageName: Constants.ProfileCoverImagePath + user.uid) { [weak self] (error, profileCoverImageURL) in
-                if let error = error {
-                    self?.showAlert(title: "Error Saving Profile Photo", message: error.localizedDescription)
-                } else if let profileCoverImageURL = profileCoverImageURL {
-                    imageURLs[.coverImage] = profileCoverImageURL.absoluteString
-                }
-                imageCalls += 1
-            }
-        } else { imageCalls += 1 }
+        }
     }
     
     @IBAction func DismissButtonPressed(_ sender: UIBarButtonItem) {
@@ -208,7 +215,10 @@ extension EditProfileController: UITableViewDataSource {
 
 
 extension EditProfileController: UITextFieldDelegate {
-    // TODO: dismiss keyboard and update the profileComponents
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
         switch textField.tag {

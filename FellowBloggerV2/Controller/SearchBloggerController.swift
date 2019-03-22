@@ -47,6 +47,7 @@ class SearchBloggerController: UIViewController {
                 }
         }
     }
+    ////////////////////
     
     private func fetchSearchBloggers(keyword: String, completionHandler: @escaping (Error?, [Blogger]?) -> Void) {
         DBService.firestoreDB
@@ -79,12 +80,7 @@ extension SearchBloggerController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = searchBloggerTableView.dequeueReusableCell(withIdentifier: "BloggerCell", for: indexPath) as? BloggerCell else { fatalError("BloggerCell not found") }
         let blogger = bloggers[indexPath.row]
-        if let profileImageURL = blogger.photoURL {
-            cell.profileImageView.kf.indicatorType = .activity
-            cell.profileImageView.kf.setImage(with: URL(string: profileImageURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
-        }
-        cell.userFullNameLabel.text = blogger.fullName
-        cell.usernameLabel.text = blogger.displayName
+        cell.configureCell(blogger: blogger)
         return cell
     }
     
