@@ -22,14 +22,16 @@ class ProfileController: UIViewController {
     private var user: Blogger? {
         didSet {
             DispatchQueue.main.async {
-                self.updateProfileUI()
+                self.updateProfileUI(user: self.user!)
+                self.fetchUserBlogs(user: self.user!)
             }
         }
     }
     public var otherBlogger: Blogger? {
         didSet {
             DispatchQueue.main.async {
-                self.updateProfileUI()
+                self.updateProfileUI(user: self.otherBlogger!)
+                self.fetchUserBlogs(user: self.otherBlogger!)
             }
         }
     }
@@ -49,8 +51,12 @@ class ProfileController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        fetchCurrentBlogger()
-        fetchUserBlogs()
+        if let _ = otherBlogger {
+            profileHeaderView.editProfileButton.isHidden = true
+            profileHeaderView.signoutButton.isHidden = true
+        } else {
+            fetchCurrentBlogger()
+        }
     }
     
     private func fetchCurrentBlogger() {
@@ -60,38 +66,38 @@ class ProfileController: UIViewController {
         }
         DBService.getBlogger(userId: currentUser.uid) { [weak self] (error, blogger) in
             if let error = error {
-                self?.showAlert(title: "Error fet hing account info", message: error.localizedDescription)
+                self?.showAlert(title: "Error fetching account info", message: error.localizedDescription)
             } else if let blogger = blogger {
                 self?.user = blogger
             }
         }
     }
     
-    private func updateProfileUI() {
-        profileHeaderView.bioLabel.text = user?.bio ?? ""
-        profileHeaderView.nameLabel.text = user?.fullName
-        profileHeaderView.displayNameLabel.text = "@" + (user?.displayName)!
-        if let profileImageURL = user?.photoURL {
+    private func updateProfileUI(user: Blogger) {
+        profileHeaderView.bioLabel.text = user.bio ?? ""
+        profileHeaderView.nameLabel.text = user.fullName
+        profileHeaderView.displayNameLabel.text = "@" + (user.displayName)
+        if let profileImageURL = user.photoURL {
             profileHeaderView.profieImageView.kf.indicatorType = .activity
             profileHeaderView.profieImageView.kf.setImage(with: URL(string: profileImageURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
         }
-        if let coverPhotoURL = user?.coverImageURL {
+        if let coverPhotoURL = user.coverImageURL {
             profileHeaderView.coverPhotoImageView.kf.indicatorType = .activity
             profileHeaderView.coverPhotoImageView.kf.setImage(with: URL(string: coverPhotoURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
         }
     }
     
     // fetch only user's dishes (Query: search  / filter)
-    private func fetchUserBlogs() {
-        guard let user = authservice.getCurrentUser() else {
-            print("no logged user")
-            return
-        }
+    private func fetchUserBlogs(user: Blogger) {
+//        guard let user = authservice.getCurrentUser() else {
+//            print("no logged user")
+//            return
+//        }
         // https://firebase.google.com/docs/firestore/query-data/queries?authuser=1
         // add a "Listener" when we want the cloud data to be automatically updated to any changes (add, delete, edit) & update our data locally (app)
         let _ = DBService.firestoreDB
             .collection(BlogsCollectionKeys.CollectionKey)
-            .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: user.uid)
+            .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: user.bloggerId)
             .addSnapshotListener { [weak self] (snapshot, error) in
                 if let error = error {
                     self?.showAlert(title: "Error fetching blogs", message: error.localizedDescription)

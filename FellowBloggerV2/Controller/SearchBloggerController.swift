@@ -93,7 +93,14 @@ extension SearchBloggerController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //segue to profile vc and passing the blogger
+        guard let destinationVC = UIStoryboard(name: "Main", bundle: Bundle.main)
+            .instantiateViewController(withIdentifier: "ProfileVC") as? ProfileController else {
+                print("Can't find ProfileVC")
+                return
+        }
+        let selectedBlogger = bloggers[indexPath.row]
+        destinationVC.otherBlogger = selectedBlogger
+        self.navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
 
