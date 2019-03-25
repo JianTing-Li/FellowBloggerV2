@@ -14,10 +14,19 @@ protocol ProfileHeaderViewDelegate: AnyObject {
 }
 
 class ProfileHeaderView: UIView {
+    // set up tap guest controller
+    // give it a target (imageview) (tapGesture.addTarget(self, selector())
+    // imageview.addgesture(tapgesture)
+    // imageView.isUseerinteractionenable = true
+    
+    // UISearchController
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var profieImageView: UIImageView!
+    
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var signoutButton: UIButton!
+    
+    @IBOutlet weak var profieImageView: UIImageView!
+    @IBOutlet weak var coverPhotoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var bioLabel: UILabel!

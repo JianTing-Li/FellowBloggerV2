@@ -13,13 +13,29 @@ class ProfileController: UIViewController {
     @IBOutlet weak var profileBlogTableView: UITableView!
     
     private lazy var profileHeaderView: ProfileHeaderView = {
-        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         return headerView
     }()
     
     private var authservice = AppDelegate.authservice
     
-    private var blogs = [Blog]() {
+    private var user: Blogger? {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateProfileUI(user: self.user!)
+                self.fetchUserBlogs(user: self.user!)
+            }
+        }
+    }
+    public var otherBlogger: Blogger? {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateProfileUI(user: self.otherBlogger!)
+                self.fetchUserBlogs(user: self.otherBlogger!)
+            }
+        }
+    }
+    private var Blogs = [Blog]() {
         didSet {
             DispatchQueue.main.async {
                 self.profileBlogTableView.reloadData()
@@ -31,110 +47,108 @@ class ProfileController: UIViewController {
         super.viewDidLoad()
         profileHeaderView.delegate = self
         configureTableView()
-        fetchUserBlogs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        updateProfileUI()
+        if let _ = otherBlogger {
+            profileHeaderView.editProfileButton.isHidden = true
+            profileHeaderView.signoutButton.isHidden = true
+        } else {
+            fetchCurrentUser()
+        }
     }
     
-    private func updateProfileUI() {
-//        guard let user = authservice.getCurrentUser() else {
-//            print("no logged user")
-//            return
-//        }
-//        DBService.fetchUser(userId: user.uid) { [weak self] (error, user) in
-//            if let _ = error {
-//                self?.showAlert(title: "Error fetching account info", message: error?.localizedDescription)
-//            } else if let user = user {
-//                self?.profileHeaderView.displayNameLabel.text = "@" + user.displayName
-//                guard let photoURL = user.photoURL,
-//                    !photoURL.isEmpty else {
-//                        return
-//                }
-//                self?.profileHeaderView.profileImageView.kf.setImage(with: URL(string: photoURL), placeholder: #imageLiteral(resourceName: "placeholder-image.png"))
-//            }
-//        }
+    private func fetchCurrentUser() {
+        guard let currentUser = authservice.getCurrentUser() else {
+            print("No logged user")
+            return
+        }
+        DBService.getBlogger(userId: currentUser.uid) { [weak self] (error, blogger) in
+            if let error = error {
+                self?.showAlert(title: "Error fetching account info", message: error.localizedDescription)
+            } else if let blogger = blogger {
+                self?.user = blogger
+            }
+        }
     }
     
-    // fetch only user's dishes (Query: search  / filter)
-    private func fetchUserBlogs() {
-//        guard let user = authservice.getCurrentUser() else {
-//            print("no logged user")
-//            return
-//        }
-//        // https://firebase.google.com/docs/firestore/query-data/queries?authuser=1
-//        // add a "Listener" when we want the cloud data to be automatically updated to any changes (add, delete, edit) & update our data locally (app)
-//        let _ = DBService.firestoreDB
-//            .collection(DishesCollectionKeys.CollectionKey)
-//            .whereField(DishesCollectionKeys.UserIdKey, isEqualTo: user.uid)
-//            .addSnapshotListener { [weak self] (snapshot, error) in
-//                if let error = error {
-//                    self?.showAlert(title: "Error fetching dishes", message: error.localizedDescription)
-//                } else if let snapshot = snapshot {
-//                    self?.dishes = snapshot.documents.map { Dish(dict: $0.data()) }
-//                        .sorted { $0.createdDate.date() > $1.createdDate.date() }
-//                }
-//        }
+    private func updateProfileUI(user: Blogger) {
+        profileHeaderView.bioLabel.text = user.bio ?? ""
+        profileHeaderView.nameLabel.text = user.fullName
+        profileHeaderView.displayNameLabel.text = "@" + (user.displayName)
+        if let profileImageURL = user.photoURL {
+            profileHeaderView.profieImageView.kf.indicatorType = .activity
+            profileHeaderView.profieImageView.kf.setImage(with: URL(string: profileImageURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
+        }
+        if let coverPhotoURL = user.coverImageURL {
+            profileHeaderView.coverPhotoImageView.kf.indicatorType = .activity
+            profileHeaderView.coverPhotoImageView.kf.setImage(with: URL(string: coverPhotoURL), placeholder: #imageLiteral(resourceName: "placeholder.png"))
+        }
+    }
+    
+    // fetch a specific user's blogs (Query: search  / filter)
+    private func fetchUserBlogs(user: Blogger) {
+        // https://firebase.google.com/docs/firestore/query-data/queries?authuser=1
+        // add a "Listener" when we want the cloud data to be automatically updated to any changes (add, delete, edit) & update our data locally (app)
+        let _ = DBService.firestoreDB
+            .collection(BlogsCollectionKeys.CollectionKey)
+            .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: user.bloggerId)
+            .addSnapshotListener { [weak self] (snapshot, error) in
+                if let error = error {
+                    self?.showAlert(title: "Error fetching blogs", message: error.localizedDescription)
+                } else if let snapshot = snapshot {
+                    self?.Blogs = snapshot.documents.map { Blog(dict: $0.data()) }
+                        .sorted { $0.createdDate.date() > $1.createdDate.date() }
+                }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "Show Edit Profile" {
-//            guard let navController = segue.destination as? UINavigationController,
-//                let editProfileVC = navController.viewControllers.first as? EditProfileViewController
-//                else {
-//                    fatalError("editProfileVC not found")
-//            }
-//            editProfileVC.profileImage = profileHeaderView.profileImageView.image
-//            editProfileVC.displayName = profileHeaderView.displayNameLabel.text
-//        } else if segue.identifier == "Show Dish Details" {
-//            guard let indexPath = sender as? IndexPath,
-//                let cell = tableView.cellForRow(at: indexPath) as? DishCell,
-//                let dishDVC = segue.destination as? DishDetailViewController else {
-//                    fatalError("cannot segue to dishDVC")
-//            }
-//            let dish = dishes[indexPath.row]
-//            dishDVC.displayName = cell.displayNameLabel.text
-//            dishDVC.dish = dish
-//        }
+        if segue.identifier == "Show Blog Details" {
+            guard let indexPath = sender as? IndexPath,
+                let blogDVC = segue.destination as? BlogFeedDetailController else {
+                    fatalError("Cannot Segue to BlogDVC")
+            }
+            let selectedBlog = Blogs[indexPath.row]
+            blogDVC.blog = selectedBlog
+        } else if segue.identifier == "Show Edit Profile VC" {
+            guard let navController = segue.destination as? UINavigationController,
+                let editProfileVC = navController.viewControllers.first as? EditProfileController else {
+                    fatalError("failed to segue to editProfileVC")
+            }
+            // TODO: set UIImages here (is this the best practice)
+            editProfileVC.selectedCoverImage = profileHeaderView.coverPhotoImageView.image
+            editProfileVC.selectedProfileImage = profileHeaderView.profieImageView.image
+            editProfileVC.currentUser = user
+        }
     }
-
 }
-
 
 extension ProfileController: UITableViewDataSource, UITableViewDelegate {
     private func configureTableView() {
         profileBlogTableView.tableHeaderView = profileHeaderView
         profileBlogTableView.dataSource = self
         profileBlogTableView.delegate = self
-        profileBlogTableView.register(UINib(nibName: "BlogCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "BlogCell")
+        profileBlogTableView.register(UINib(nibName: "BlogCell", bundle: nil), forCellReuseIdentifier: "BlogCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return blogs.count
+        return Blogs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DishCell", for: indexPath) as? DishCell else {
-//            fatalError("DishCell not found")
-//        }
-//        let dish = dishes[indexPath.row]
-//        cell.selectionStyle = .none
-//        cell.countryLabel.text = dish.country
-//        cell.dishDescriptionLabel.text = dish.dishDescription
-//        cell.displayNameLabel.text = ""
-//        cell.dishImageView.kf.setImage(with: URL(string: dish.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image.png"))
-//        return cell
         guard let cell = profileBlogTableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as? BlogCell else {
             fatalError("BlogCell not found")
         }
+        let selectedBlog = Blogs[indexPath.row]
+        cell.configureCell(blog: selectedBlog)
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            performSegue(withIdentifier: "Show Dish Details", sender: indexPath)
+        performSegue(withIdentifier: "Show Blog Details", sender: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -149,6 +163,6 @@ extension ProfileController: ProfileHeaderViewDelegate {
     }
     
     func willEditProfile(profileHeaderView: ProfileHeaderView) {
-        performSegue(withIdentifier: "Show Edit Profile", sender: nil)
+        performSegue(withIdentifier: "Show Edit Profile VC", sender: nil)
     }
 }
