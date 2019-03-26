@@ -41,38 +41,22 @@ class BlogFeedDetailController: UIViewController {
         }
     }
     
-    
-    // TODO: refactored action sheet with a function in VC+Extensions
     @IBAction func optionButtonPressed(_ sender: UIButton) {
         guard let user = authService.getCurrentUser() else {
             showAlert(title: "No Logged User", message: nil)
             print("no logged user")
             return
         }
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let saveImageAction = UIAlertAction(title: "Save Image", style: .default) { [unowned self] (action) in
-            if let image = self.blogImageView.image {
-                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        var actionTitles = [String]()
+        actionTitles = user.uid == blog.bloggerId ? ["Save Image", "Edit", "Delete"] : ["Save Image"]
+        showActionSheet(title: nil, message: nil, actionTitles: actionTitles, handlers: [{ [weak self] (saveImageAction) in
+            if let image = self?.blogImageView.image { UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil) }
+            }, { [weak self] (editBlogAction) in
+               self?.segueToEditBlogVC()
+            }, { [weak self] (deleteBlogAction) in
+                self?.deleteBlog()
             }
-        }
-        let editAction = UIAlertAction(title: "Edit", style: .default) { [unowned self] (action) in
-            self.segueToEditBlogVC()
-        }
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [unowned self] (action) in
-            // TODO: add another alert that asks user "Are you sure?"
-            self.deleteBlog()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alertController.addAction(saveImageAction)
-        if user.uid == blog.bloggerId {
-            alertController.addAction(editAction)
-            alertController.addAction(deleteAction)
-        }
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true)
+            ])
     }
     
     private func deleteBlog() {
@@ -86,7 +70,6 @@ class BlogFeedDetailController: UIViewController {
             }
         }
     }
-
     private func segueToEditBlogVC() {
         performSegue(withIdentifier: "Show Edit Blog", sender: nil)
     }
