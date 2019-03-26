@@ -47,6 +47,7 @@ class ProfileController: UIViewController {
         super.viewDidLoad()
         profileHeaderView.delegate = self
         configureTableView()
+        setupImageTapGestures()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +58,38 @@ class ProfileController: UIViewController {
         } else {
             fetchCurrentUser()
         }
+    }
+    
+    private func setupImageTapGestures() {
+        profileHeaderView.profieImageView.isUserInteractionEnabled = true
+        profileHeaderView.coverPhotoImageView.isUserInteractionEnabled = true
+        let profileImageTapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageTap))
+        let coverImageTapGesture = UITapGestureRecognizer(target: self, action: #selector(coverImageTap))
+        profileHeaderView.profieImageView.addGestureRecognizer(profileImageTapGesture)
+        profileHeaderView.coverPhotoImageView.addGestureRecognizer(coverImageTapGesture)
+    }
+    @objc private func profileImageTap() {
+        showActionSheet(title: nil, message: nil, actionTitles: ["Save Profile Image"], handlers: [{ [weak self] (saveImageAction) in
+            if let profileImage = self?.profileHeaderView.profieImageView.image {
+                UIImageWriteToSavedPhotosAlbum(profileImage, nil, nil, nil)
+                self?.showAlert(title: "Profile Image Saved", message: nil)
+            } else {
+                self?.showAlert(title: "Fail To Save", message: nil)
+            }
+            }
+            ])
+        
+    }
+    @objc private func coverImageTap() {
+        showActionSheet(title: nil, message: nil, actionTitles: ["Save Cover Image"], handlers: [{ [weak self] (saveImageAction) in
+            if let coverImage = self?.profileHeaderView.coverPhotoImageView.image {
+                UIImageWriteToSavedPhotosAlbum(coverImage, nil, nil, nil)
+                self?.showAlert(title: "Cover Image Saved", message: nil)
+            } else {
+                self?.showAlert(title: "Fail To Save", message: nil)
+            }
+            }
+            ])
     }
     
     private func fetchCurrentUser() {
