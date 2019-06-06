@@ -1,15 +1,15 @@
-## FellowBloggerV2
+# FellowBloggerV2
 FellowBlogger is a platform that connects all fellows at Pursuit. Users can post best momements of their life.
 
-# Viewing Blog Posts
-# Posting a Blog Post
-# Finding a User
+## Viewing Blog Posts
+## Posting a Blog Post
+## Finding a User
 
-## Resources
+# Resources
 [Finals Specifications](https://github.com/joinpursuit/Pursuit-Core-iOS-Unit6-CTA-FellowBloggerV2)
 [Trello Board](https://trello.com/b/vST4yN44/fellowbloggerv2)
 
-## Build With
+# Build With
 * Firebase - This dependency allows us to get acess to the core methods and properties of Google's frameworks.
 
 * FirebaseFirestore -  This dependency will allow us to create,read,write delete and update documents and colletions on the cloud Firestore database.
@@ -18,7 +18,7 @@ FellowBlogger is a platform that connects all fellows at Pursuit. Users can post
 
 * Firebase Storage - Allows us to store user images and documents.
 
-## Prerequisites
+# Prerequisites
 * Xcode - 9.0+, set up on Swift Language
 * iOS 8.0+ 
 * Swift 4.0+
