@@ -1,22 +1,24 @@
-# FellowBloggerV2
+## FellowBloggerV2
+FellowBlogger is a platform that connects all fellows at Pursuit. Users can post best momements of their life.
 
+# Viewing Blog Posts
+# Posting a Blog Post
+# Finding a User
+
+## Resources
 [Finals Specifications](https://github.com/joinpursuit/Pursuit-Core-iOS-Unit6-CTA-FellowBloggerV2)
-
 [Trello Board](https://trello.com/b/vST4yN44/fellowbloggerv2)
 
-## FellowBloggerV2 MVP Checklist Requirements
+## Build With
+* Firebase - This dependency allows us to get acess to the core methods and properties of Google's frameworks.
 
-- [x] user can create an account 
-- [x] user can sign in to an existing account
-- [x] user can sign out of their account
-- [x] user can view all blogs in the blog feed controller (sorted by most recent date, more here for [date helpers](https://github.com/alexpaul/SwiftyHelpers))
-- [x] user can view all their created blogs in the profile view controller (sorted by most recent date)
-- [x] user can edit their profile, edits include: profile photo, cover photo, first name, last name, username and bio 
-- [x] user can create a blog post: post includes adding a photo from camera or photo library 
-- [x] user can edit their blog post 
-- [x] user can delete a blog post
-- [x] selecting a blog post shows a detail view of the blog 
-- [x] user can see more options via an action sheet to carry out the appropriate action e.g delete, edit, save image
-- [x] user can search for other bloggers in the search tab 
-- [x] selecting a blogger from the search takes the user to the blogger's profile page
-- [x] user can view all blogs of a fellow blogger after selecting their profile
+* FirebaseFirestore -  This dependency will allow us to create,read,write delete and update documents and colletions on the cloud Firestore database.
+
+* Firebase Auth - This dependency allow us to create an "authenticated" user on firebase. It allows us to verify user login information and provides the relevant updates to inconsistencies with user's data. 
+
+* Firebase Storage - Allows us to store user images and documents.
+
+## Prerequisites
+* Xcode - 9.0+, set up on Swift Language
+* iOS 8.0+ 
+* Swift 4.0+
