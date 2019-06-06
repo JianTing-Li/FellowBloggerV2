@@ -9,8 +9,8 @@ gifs
 gifs
 
 # Resources
-[Finals Specifications](https://github.com/joinpursuit/Pursuit-Core-iOS-Unit6-CTA-FellowBloggerV2)
-[Trello Board](https://trello.com/b/vST4yN44/fellowbloggerv2)
+* [Finals Specifications](https://github.com/joinpursuit/Pursuit-Core-iOS-Unit6-CTA-FellowBloggerV2)
+* [Trello Board](https://trello.com/b/vST4yN44/fellowbloggerv2)
 
 # Build With
 * Firebase - This dependency allows us to get acess to the core methods and properties of Google's frameworks.
