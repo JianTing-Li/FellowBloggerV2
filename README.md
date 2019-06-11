@@ -2,11 +2,13 @@
 A blogger app for people to share important and memorable moments of their life.
 
 ## Viewing Blog Posts
-gifs
+![ViewingBlogPosts]()
+
 ## Posting a Blog Post
-gifs
+![PostingBlogPost]()
+
 ## Finding a User
-gifs
+![FindAUser]()
 
 # Resources
 * [Finals Specifications](https://github.com/joinpursuit/Pursuit-Core-iOS-Unit6-CTA-FellowBloggerV2)
