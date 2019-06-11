@@ -2,13 +2,19 @@
 A blogger app for people to share important and memorable moments of their life.
 
 ## Viewing Blog Posts
-![ViewingBlogPosts]()
+![ViewingBlogPosts](https://github.com/JianTing-Li/FellowBloggerV2/blob/master/Images/ViewBlogPosts.gif)
 
 ## Posting a Blog Post
-![PostingBlogPost]()
+![PostingBlogPost](https://github.com/JianTing-Li/FellowBloggerV2/blob/master/Images/CreateBlogPost.gif)
+
+## Editing and Delete Blog Post
+![EditAndDeletePost](https://github.com/JianTing-Li/FellowBloggerV2/blob/master/Images/EditAndDeletePost.gif)
 
 ## Finding a User
-![FindAUser]()
+![FindAUser](https://github.com/JianTing-Li/FellowBloggerV2/blob/master/Images/SearchBlogger.gif)
+
+## Saving a Blog Post Image
+![SavingBlogPostImage](https://github.com/JianTing-Li/FellowBloggerV2/blob/master/Images/SaveBlogImage.gif)
 
 # Resources
 * [Finals Specifications](https://github.com/joinpursuit/Pursuit-Core-iOS-Unit6-CTA-FellowBloggerV2)
