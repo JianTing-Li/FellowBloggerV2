@@ -7,7 +7,7 @@ A blogger app for people to share important and memorable moments of their life.
 ## Posting a Blog Post
 ![PostingBlogPost](https://github.com/JianTing-Li/FellowBloggerV2/blob/master/Images/CreateBlogPost.gif)
 
-## Editing and Delete Blog Post
+## Editing and Deleting a Blog Post
 ![EditAndDeletePost](https://github.com/JianTing-Li/FellowBloggerV2/blob/master/Images/EditAndDeletePost.gif)
 
 ## Finding a User
